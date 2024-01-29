@@ -37,6 +37,10 @@
     	<script>
 			$(function(){
 				
+				$("#loginBtn").click(function(){
+					location.href="doLogin";
+				});//로그인
+				
 				$("#signUpBtn").click(function(){
 					alert("회원가입 페이지로 이동합니다.")
 					location.href="a_signUp.do";
@@ -101,7 +105,7 @@
         <div class="login_wap">
        		<img src="../assets/img/login/login02.png" style="margin-top: 30px;">
             <h2>로 그 인</h2>
-            <form name="loginFrm" method="post" id="log_f" action="do_Login.do">
+            <form name="loginFrm" method="post" id="log_f" action="doLogin">
                 <input type="text" name="id" placeholder="아이디" id="id">
                 <input type="password" name="pw" placeholder=" 비밀번호" id="pw">
                 <label for="remember-check" id="labelpw">

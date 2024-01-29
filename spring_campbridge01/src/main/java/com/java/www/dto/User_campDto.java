@@ -1,4 +1,4 @@
-package com.java.dto;
+package com.java.www.dto;
 
 import java.sql.Timestamp;
 
