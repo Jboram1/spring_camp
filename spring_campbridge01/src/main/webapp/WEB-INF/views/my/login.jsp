@@ -37,9 +37,7 @@
     	<script>
 			$(function(){
 				
-				$("#loginBtn").click(function(){
-					location.href="doLogin";
-				});//로그인
+				
 				
 				$("#signUpBtn").click(function(){
 					alert("회원가입 페이지로 이동합니다.")
@@ -55,7 +53,7 @@
 				$("#loginBtn").click(function(){
 					var enteredId = $("#id").val();
 			        var enteredPw = $("#pw").val();
-					if(enteredId.length<3){
+					if(enteredId.length<1){
 					alert("아이디를 입력하세요.")
 					$("#id").focus();
 					return false
@@ -70,8 +68,14 @@
 					if($("#remember-check").is(":checked")){
 						localStorage.setItem("rememberedId", enteredId);
 					}else{localStorage.removeItem("rememberedId");}//if-else
+					
 					loginFrm.submit();
 				});//로그인버튼
+				
+				
+				
+				
+				
 				//----아이디 저장하기 체크박스 시작-------	
 			});//제이쿼리 구문
 			  function onSuccess(googleUser) {

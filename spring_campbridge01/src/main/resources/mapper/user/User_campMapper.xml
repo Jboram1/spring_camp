@@ -15,6 +15,14 @@
 		select * from user_camp where name=#{name} and email=#{email}
 	</select>
 	
+<!-- 회원가입 저장 -->	
+	<insert id="signUp">
+		insert into User_camp values
+		(#{id},#{pw},#{name},#{nickname},#{email},#{address},#{gender},#{phone},#{local},#{m_img},#{mcode},sysdate)
+	</insert>
 	
-	
+<!-- 아이디체크 -->
+	<select id="idCheck" resultType="com.java.www.dto.User_campDto">
+		select * from user_camp where id=#{id}
+	</select>
 </mapper>

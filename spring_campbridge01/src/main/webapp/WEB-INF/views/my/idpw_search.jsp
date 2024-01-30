@@ -50,24 +50,43 @@
 					<div id ="idsearch">
 					<h3>아이디 찾기</h3>
 					<div class="searchIP_informbox">
+						<form id="findForm" action="${contextPath}/my/idpw_search" method="post">
 						<div class="searchIP_inform">
 							<ul>
-								<li><input type="text" class="idsearch_name" name="idsearch_name" placeholder="이름"/></li>
-								<li><input type="text" class="idsearch_email" name="idsearch_email" placeholder="이메일" /></li>
+								<li><input type="text" id="idName" class="idsearch_name" name="idsearch_name" placeholder="이름"/></li>
+								<li><input type="text" id="idEmail" class="idsearch_email" name="idsearch_email" placeholder="이메일" /></li>
 							</ul>
 
-							<input type="button" class="btn searchIP_gbtn" name="searchIP_gbtn" value="아이디 찾기">
+							<input type="button" id="idSBtn" class="btn searchIP_gbtn" name="searchIP_gbtn" value="아이디 찾기">
 						</div><!-- searchIP_inform -->
+						</form>
 					</div><!-- searchIP_informbox -->
 					</div>
 					
 					<script>
 						$(function(){
-							$(".searchIP_gbtn").click(()=>{
+							$("#idSBtn").click(()=>{
 								alert("아이디찾기시작");
-								let name = $(".idsearch_name").val();
-								let email = $(".idsearch_email").val();
 								
+								var enteredName = $("#idName").val();
+						        var enteredEmail = $("#idEmail").val();
+								if(enteredName.length<1){
+								alert("이릅을 입력하세요.")
+								$("#idName").focus();
+								return false
+								}//if-이름 유효성
+								
+								//if(enteredEmail.length<1){
+								//alert("이메일을 입력하세요.")
+								//$("#idEmail").focus();
+								//return false
+								//}//if-이메일 유효성
+							
+								let name = $("#idName").val();
+								let email = $("#idEmail").val();
+								
+								
+								//ajax
 								$.ajax({
 									url:"/my/idpw_search",
 									data:{"name":name,"email":email},
@@ -75,28 +94,20 @@
 									dataType:"text",
 									success:function(data){
 										console.log(data);
-										if(result!="성공"){
+										if(data=="아이디없음"){
 											alert("아이디가 존재하지 않습니다. 회원가입을 해주세요.");
-										}else(result=="성공"){
+										}else{
 											alert("아이디를 찾았습니다.");
-											//아이디 확인페이지 이동
-											location.href="/my/idsearch"+data;
+											location.href="/my/idsearch?id="+data;
 										}
 									},
 									error:function(){
 										alert("실패");
 									}
-									
 								});//ajax
-								
-								
 							});//idBtn
 						});//j
 					</script>
-					
-					
-					
-					
 					
 
 					<div id="pwsearch">
@@ -108,10 +119,11 @@
 								<li><input type="text" class="pwsearch_email" name="pwsearch_email" placeholder="이메일"/></li>
 							</ul>
 
-							<input type="button" class="btn searchIP_gbtn" name="searchIP_gbtn" value="비밀번호찾기">
+							<input type="button" id="pwSBtn" class="btn searchIP_gbtn" name="searchIP_gbtn" value="비밀번호찾기">
 						</div><!--searchIP_inform  -->
 					</div><!-- searchIP_informbox -->
 					</div>
+					
 
 
 				</div><!--searchIP_member -->

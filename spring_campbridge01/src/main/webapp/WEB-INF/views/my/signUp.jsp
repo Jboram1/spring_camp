@@ -32,6 +32,7 @@
 	    <link href="../assets/css/main2.css" rel="stylesheet">
 	    <link href="../assets/css/header.css" rel="stylesheet">
 	    <link href="../assets/css/my/signUp.css" rel="stylesheet" type="text/css">
+	    <script src="../assets/js/signUp.js"></script>
         
 		<title>회원가입 - 회원정보입력</title>
 	</head>
@@ -40,7 +41,7 @@
 	<%@include file="../include/header.jsp" %>
 	<!-- End Header -->
 		<section>
-			<form name="agree" method="get" action="/signUp02">
+			<form name="userSignupFrm" id="userSignupFrm" method="post" action="#">
 				<div id="subBanner"></div>
 				<div id="sub_top_area">
 					<h3>회원가입</h3>
@@ -57,7 +58,7 @@
 						</dt>
 						<dd class="photoBoxMI">
 							<div class="photoMI"><img src="#"></div>
-				          	<div class="inputMI" ><input type="file" name="file" id="file"></div>
+				          	<div class="inputMI" ><input type="file" name="file" id="file" value="${ucdto.m_img}"></div>
 						</dd>
 					</dl>
 					<dl id="join_name_dl">
@@ -66,7 +67,7 @@
 							<label for="name">이름</label>
 						</dt>
 						<dd>
-							<input type="text" id="name" name="name" required/>
+							<input type="text" id="name" name="name" value="${ucdto.name}" required/>
 						</dd>
 					</dl>
 					<dl id="join_id_dl">
@@ -75,10 +76,10 @@
 							<label for="id">아이디</label>
 						</dt>
 						<dd>
-							<input type="text" id="id" name="id" minlength="4" maxlength="16" required/>
-							<input type="button" value="중복확인"/>
-							<span>4~16자리의 영문, 숫자, 특수기호(_)만 사용하실 수 있습니다.</span>
-							<span>첫 글자는 영문으로 입력해 주세요.</span>
+							<input type="text" id="id" name="id" minlength="4" maxlength="16" value="${ucdto.id}" required/>
+							<input type="button" id="idCheckBtn" value="중복확인"/>
+							<span>첫 글자는 영문으로 입력해 주세요. 4~16자리의 영문, 숫자, 특수기호(_)만 사용하실 수 있습니다.</span>
+							<span id="chkTxt"></span>
 						</dd>
 					</dl>
 					<dl id="join_pw1_dl">
@@ -87,7 +88,7 @@
 							<label for="pw1">비밀번호</label>
 						</dt>
 						<dd>
-							<input type="password" id="pw1" name="pw1" minlength="8" required />
+							<input type="password" id="pw1" name="pw1" minlength="8" value="${ucdto.pw}" required />
 							<span>영문, 숫자, 특수문자 중 2종류 조합 시 10자리 이상 입력</span>
 							<span>영문, 숫자, 특수문자 모두 조합 시 8자리 이상 입력</span>
 						</dd>
@@ -108,7 +109,7 @@
 							<label for="nickname">닉네임</label>
 						</dt>
 						<dd>
-							<input type="text" id="name" name="name" required/>
+							<input type="text" id="name" name="name" value="${ucdto.nickname}" required/>
 							<span>5글자까지 입력해주세요.</span>
 						</dd>
 					</dl>
@@ -118,7 +119,7 @@
 							<label for="mail_id">이메일</label>
 						</dt>
 						<dd>
-							<input type="text" id="mail_id" name="mail_id" required />
+							<input type="text" id="mail_id" name="mail_id" value="${ucdto.email}" required />
 							<span>@</span>
 							<input type="text" id="main_tail" name="mail_tail" required />
 							<select>
@@ -151,9 +152,13 @@
 						</dt>
 						<dd>
 							<div>
-								<input type="radio" name="gender" id="male" value="male" checked="checked"/>
+								<input type="radio" name="gender" id="male" value="male"
+								<c:if test="${fn:contains(ucdto.gender,'male')}">checked</c:if>
+								>
 								<label for="male">남성</label>
-								<input type="radio" name="gender" id="female" value="female" />
+								<input type="radio" name="gender" id="female" value="female"
+								<c:if test="${fn:contains(ucdto.gender,'female')}">checked</c:if>
+								>
 								<label for="female">여성</label>
 							</div>
 						</dd>
@@ -162,7 +167,7 @@
 					<dl id="join_tell_dl">
 						<dt>
 							<div></div> <!-- 필수항목 -->
-							<label for="f_tell">휴대전화</label>
+							<label for="f_tell" value="${ucdto.phone}">휴대전화</label>
 						</dt>
 						<dd>
 							<input type="text" id="f_tell" name="f_tell" maxlength="3" required />
@@ -181,76 +186,110 @@
 					
 					<dl id="join_interests_dl">
 						<dt>
-							<label id="genderLb" >지역</label>
+							<label id="genderLb" value="${mdto.local}">지역</label>
 						</dt>
 						<dd>
 							<ul>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do01" class="check01" value="1" title="1"/>
+									<input type="checkbox" name="searchDo" id="c_do01" class="check01" value="1" title="1"
+									<c:if test="${fn:contains(ucdto.local,'c_do01')}">checked</c:if>
+									>
 									<label for="c_do01">서울시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do02" class="check01" value="2" title="2"/>
+									<input type="checkbox" name="searchDo" id="c_do02" class="check01" value="2" title="2"
+									<c:if test="${fn:contains(ucdto.local,'c_do02')}">checked</c:if>
+									>
 									<label for="c_do02">부산시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do03" class="check01" value="3" title="3"/>
+									<input type="checkbox" name="searchDo" id="c_do03" class="check01" value="3" title="3"
+									<c:if test="${fn:contains(ucdto.local,'c_do03')}">checked</c:if>
+									>
 									<label for="c_do03">대구시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do04" class="check01" value="4" title="4"/>
+									<input type="checkbox" name="searchDo" id="c_do04" class="check01" value="4" title="4"
+									<c:if test="${fn:contains(ucdto.local,'c_do04')}">checked</c:if>
+									>
 									<label for="c_do04">인천시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do05" class="check01" value="5" title="5"/>
+									<input type="checkbox" name="searchDo" id="c_do05" class="check01" value="5" title="5"
+									<c:if test="${fn:contains(ucdto.local,'c_do05')}">checked</c:if>
+									>
 									<label for="c_do05">광주시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do06" class="check01" value="6" title="6"/>
+									<input type="checkbox" name="searchDo" id="c_do06" class="check01" value="6" title="6"
+									<c:if test="${fn:contains(ucdto.local,'c_do06')}">checked</c:if>
+									>
 									<label for="c_do06">대전시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do07" class="check01" value="7" title="7"/>
+									<input type="checkbox" name="searchDo" id="c_do07" class="check01" value="7" title="7"
+									<c:if test="${fn:contains(ucdto.local,'c_do07')}">checked</c:if>
+									>
 									<label for="c_do07">울산시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do08" class="check01" value="8" title="8"/>
+									<input type="checkbox" name="searchDo" id="c_do08" class="check01" value="8" title="8"
+									<c:if test="${fn:contains(ucdto.local,'c_do08')}">checked</c:if>
+									>
 									<label for="c_do08">세종시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do09" class="check01" value="9" title="9"/>
+									<input type="checkbox" name="searchDo" id="c_do09" class="check01" value="9" title="9"
+									<c:if test="${fn:contains(ucdto.local,'c_do09')}">checked</c:if>
+									>
 									<label for="c_do09">경기도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do10" class="check01" value="10" title="10"/>
+									<input type="checkbox" name="searchDo" id="c_do10" class="check01" value="10" title="10"
+									<c:if test="${fn:contains(ucdto.local,'c_do010')}">checked</c:if>
+									>
 									<label for="c_do10">강원도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do11" class="check01" value="11" title="11"/>
+									<input type="checkbox" name="searchDo" id="c_do11" class="check01" value="11" title="11"
+									<c:if test="${fn:contains(ucdto.local,'c_do011')}">checked</c:if>
+									>
 									<label for="c_do11">충청북도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do12" class="check01" value="12" title="12"/>
+									<input type="checkbox" name="searchDo" id="c_do12" class="check01" value="12" title="12"
+									<c:if test="${fn:contains(ucdto.local,'c_do012')}">checked</c:if>
+									>
 									<label for="c_do12">충청남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do13" class="check01" value="13" title="13"/>
+									<input type="checkbox" name="searchDo" id="c_do13" class="check01" value="13" title="13"
+									<c:if test="${fn:contains(ucdto.local,'c_do013')}">checked</c:if>
+									>
 									<label for="c_do13">전라북도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do14" class="check01" value="14" title="14"/>
+									<input type="checkbox" name="searchDo" id="c_do14" class="check01" value="14" title="14"
+									<c:if test="${fn:contains(ucdto.local,'c_do014')}">checked</c:if>
+									>
 									<label for="c_do14">전라남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do015" class="check01" value="15" title="15"/>
+									<input type="checkbox" name="searchDo" id="c_do015" class="check01" value="15" title="15"
+									<c:if test="${fn:contains(ucdto.local,'c_do015')}">checked</c:if>
+									>
 									<label for="c_do15">경상북도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do16" class="check01" value="16" title="16"/>
+									<input type="checkbox" name="searchDo" id="c_do16" class="check01" value="16" title="16"
+									<c:if test="${fn:contains(ucdto.local,'c_do016')}">checked</c:if>
+									>
 									<label for="c_do16">경상남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="searchDo" id="c_do17" class="check01" value="17" title="17"/>
+									<input type="checkbox" name="searchDo" id="c_do17" class="check01" value="17" title="17"
+									<c:if test="${fn:contains(ucdto.local,'c_do017')}">checked</c:if>
+									>
 									<label for="c_do17">제주도</label>
 								</li>
 							</ul>
@@ -258,8 +297,8 @@
 					</dl>
 				</fieldset>
 				<div id="info_input_button">
-					<input type="reset" value="취소하기" />
-					<input type="submit" value="가입하기" />
+					<input type="button" onclick="javascript:location.href='/'" value="취소하기" />
+					<input type="submit" id="savebtn" value="가입하기" />
 				</div>
 				
 			</form>

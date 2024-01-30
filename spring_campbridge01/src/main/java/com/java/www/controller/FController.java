@@ -36,6 +36,27 @@ public class FController {
 		return "/my/login";
 	}// login()
 	
+	@RequestMapping("doLogin")
+	public String doLogin(User_campDto ucdto, Model model, HttpServletRequest request) {
+		int result = 0;
+		System.out.println("FC id : "+ucdto.getId());
+		System.out.println("FC pw : "+ucdto.getPw());
+		
+		User_campDto usercampDto = userCampService.loginSelect(ucdto);
+		if(usercampDto != null) {
+			session.setAttribute("session_id", usercampDto.getId());
+			session.setAttribute("session_name", usercampDto.getName());
+			System.out.println("FC id 있음 : "+usercampDto.getId());
+			result = 1;
+		}else {
+			System.out.println("FC userDto : null");
+		}
+		
+		model.addAttribute("result", result);
+		return "/my/doLogin";
+	}// doLogin()
+	
+	
 	@RequestMapping("logout")
 	public String logout() {
 		session.invalidate();
@@ -47,24 +68,6 @@ public class FController {
 		return "/my/myPage";
 	}// myPage()
 	
-	@RequestMapping("doLogin")
-	public String doLogin(User_campDto ucdto, Model model, HttpServletRequest request) {
-		int result = 0;
-		System.out.println("FC id : "+ucdto.getId());
-		User_campDto usercampDto = userCampService.loginSelect(ucdto);
-		if(usercampDto!=null) {
-			session.setAttribute("session_id", usercampDto.getId());
-			session.setAttribute("session_name", usercampDto.getName());
-			result=1;
-		}else {
-			System.out.println("FC usercampDto : null");
-		}
-		
-		model.addAttribute("result",result);
-		System.out.println("FC result : "+result);
-		
-		return "/my/doLogin";
-	}// doLogin()
 	
 	
 	
@@ -74,15 +77,17 @@ public class FController {
 			return "/my/idpw_search";
 		}// login()
 		
+		
+		
 		@PostMapping("idpw_search") //ajax 아이디찾기- name,email
 		@ResponseBody
 		public String idpw_search(String name, String email) {
 			System.out.println("FC idsearch name : "+name);
 			System.out.println("FC idsearch email : "+email);
-			User_campDto usercampDto = userCampService.idsearch(name,email);
-			String result = "";
+			String result = userCampService.idsearch(name,email);
+						
 			return result;
-		}// login()
+		}// idpw_search()
 	
 		
 		//id 찾기완료
@@ -104,6 +109,29 @@ public class FController {
 		public String signUp() {
 			return "/my/signUp";
 		}// signUp()
+		
+		
+		//회원가입 저장
+		@PostMapping("signUp")
+		@ResponseBody
+		public String signUp(User_campDto ucdto) {
+			
+			String result = userCampService.signUp(ucdto);
+			return result;
+		}// signUp()
+		
+		
+		@PostMapping("idCheck")
+		@ResponseBody
+		public String idCheck(String id) {
+			String result = userCampService.idCheck(id);
+			return result;
+		}
+		
+		
+		
+		
+		
 		
 		//회원가입 완료
 		@GetMapping("signUp02")

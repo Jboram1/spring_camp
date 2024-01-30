@@ -32,7 +32,7 @@
 	      		
 	      	</c:if>
 	      	<c:if test="${session_id!=null}">
-	      		<li><a href="logout">로그아웃</a></li>
+	      		<li><a href="/my/logout">로그아웃</a></li>
 	      		
 	      	</c:if>
 	      <li><a href="/commuinty/nList">공지사항</a></li>
