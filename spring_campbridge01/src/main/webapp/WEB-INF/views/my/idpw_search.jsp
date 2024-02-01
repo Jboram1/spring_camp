@@ -71,7 +71,7 @@
 								var enteredName = $("#idName").val();
 						        var enteredEmail = $("#idEmail").val();
 								if(enteredName.length<1){
-								alert("이릅을 입력하세요.")
+								alert("이름을 입력하세요.")
 								$("#idName").focus();
 								return false
 								}//if-이름 유효성
@@ -88,7 +88,7 @@
 								
 								//ajax
 								$.ajax({
-									url:"/my/idpw_search",
+									url:"/my/id_s",
 									data:{"name":name,"email":email},
 									type:"post",
 									dataType:"text",
@@ -106,6 +106,40 @@
 									}
 								});//ajax
 							});//idBtn
+							
+							
+							
+							
+							
+							$("#pwSBtn").click(function(){
+								alert("비밀번호 찾기를 시작");
+								
+								var pwsId = $("#pwId").val();
+						        var pwsEmail = $("#pwNEmail").val();
+								if(pwsId.length<1){
+								alert("아이디를 입력하세요.")
+								$("#pwsId").focus();
+								return false
+								}//유효성
+								
+								//ajax
+								$.ajax({
+									url:"/my/pw_s",
+									data:{"pwId":pwsId,"pwNEmail":pwsEmail},
+									type:"post",
+									dataType:"text",
+									success:function(data){
+										if(data=="success") alert("메일이 발송되었습니다.");
+										else alert("아이디 또는 이메일주소가 틀립니다. 다시 입력하세요.");
+										console.log(data);
+									},
+									error:function(){
+										alert("실패");
+									}
+								});//ajax
+							});//pwSBtn
+							
+							
 						});//j
 					</script>
 					
@@ -115,8 +149,8 @@
 					<div class="searchIP_informbox">
 						<div class="searchIP_inform">
 							<ul>
-								<li><input type="text" class="pwsearch_id" name="pwsearch_id" placeholder="아이디"/></li>
-								<li><input type="text" class="pwsearch_email" name="pwsearch_email" placeholder="이메일"/></li>
+								<li><input type="text" id="pwId" class="pwsearch_id" name="pwsearch_id" placeholder="아이디"/></li>
+								<li><input type="text" id="pwNEmail" class="pwsearch_email" name="pwsearch_email" placeholder="이메일"/></li>
 							</ul>
 
 							<input type="button" id="pwSBtn" class="btn searchIP_gbtn" name="searchIP_gbtn" value="비밀번호찾기">

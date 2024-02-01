@@ -53,7 +53,6 @@
 				<fieldset class="fieldset_class">
 					<dl id="join_picture_dl">
 						<dt>
-							
 							<label for="name">프로필 사진</label>
 						</dt>
 						<dd class="photoBoxMI">
@@ -78,7 +77,7 @@
 						<dd>
 							<input type="text" id="id" name="id" minlength="4" maxlength="16" value="${ucdto.id}" required/>
 							<input type="button" id="idCheckBtn" value="중복확인"/>
-							<span>첫 글자는 영문으로 입력해 주세요. 4~16자리의 영문, 숫자, 특수기호(_)만 사용하실 수 있습니다.</span>
+							<span>첫 글자는 영문으로 입력해 주세요. 4~8자리의 영문, 숫자만 사용하실 수 있습니다.</span>
 							<span id="chkTxt"></span>
 						</dd>
 					</dl>
@@ -88,9 +87,9 @@
 							<label for="pw1">비밀번호</label>
 						</dt>
 						<dd>
-							<input type="password" id="pw1" name="pw1" minlength="8" value="${ucdto.pw}" required />
-							<span>영문, 숫자, 특수문자 중 2종류 조합 시 10자리 이상 입력</span>
-							<span>영문, 숫자, 특수문자 모두 조합 시 8자리 이상 입력</span>
+							<input type="text" id="pw1" name="pw1" minlength="12" value="${ucdto.pw}" required />
+							<span>입력은 영문자,숫자,특수문자 1개 이상 입력하셔야 합니다.</span>
+							<span>6~12자리만 입력가능. 사용가능 특수문자(!@$%^&().,)</span>
 						</dd>
 					</dl>
 					<dl id="join_pw2_dl">
@@ -99,8 +98,8 @@
 							<label for="pw2">비밀번호 확인</label>
 						</dt>
 						<dd>
-							<input type="password" id="pw2" name="pw2" minlength="8" required />
-							<span>비밀번호를 다시 한번 입력해 주세요.</span>
+							<input type="text" id="pw2" name="pw2" minlength="12" onkeyup="passConfrim()" required />
+							<span id="confirmMsg">　</span>
 						</dd>
 					</dl>
 					<dl id="join_name_dl">
@@ -109,7 +108,7 @@
 							<label for="nickname">닉네임</label>
 						</dt>
 						<dd>
-							<input type="text" id="name" name="name" value="${ucdto.nickname}" required/>
+							<input type="text" id="nickname" name="name" value="${ucdto.nickname}" required/>
 							<span>5글자까지 입력해주세요.</span>
 						</dd>
 					</dl>
