@@ -7,6 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
  	   
 	    <meta content="" name="description">
 	    <meta content="" name="keywords">
@@ -57,7 +58,7 @@
 						</dt>
 						<dd class="photoBoxMI">
 							<div class="photoMI"><img src="#"></div>
-				          	<div class="inputMI" ><input type="file" name="file" id="file" value="${ucdto.m_img}"></div>
+				          	<div class="inputMI" ><input type="file" name="m_img" id="m_img" value="${ucdto.m_img}"></div>
 						</dd>
 					</dl>
 					<dl id="join_name_dl">
@@ -98,8 +99,8 @@
 							<label for="pw2">비밀번호 확인</label>
 						</dt>
 						<dd>
-							<input type="text" id="pw2" name="pw2" minlength="12" onkeyup="passConfrim()" required />
-							<span id="confirmMsg">　</span>
+							<input type="text" id="pw2" name="pw2" minlength="12" required />
+							<span id="pwCheck">　</span>
 						</dd>
 					</dl>
 					<dl id="join_name_dl">
@@ -108,8 +109,8 @@
 							<label for="nickname">닉네임</label>
 						</dt>
 						<dd>
-							<input type="text" id="nickname" name="name" value="${ucdto.nickname}" required/>
-							<span>5글자까지 입력해주세요.</span>
+							<input type="text" id="nickname" name="nickname" value="${ucdto.nickname}" required/>
+							<span>5글자까지 입력가능.</span>
 						</dd>
 					</dl>
 					<dl id="join_mail_dl">
@@ -120,13 +121,13 @@
 						<dd>
 							<input type="text" id="mail_id" name="mail_id" value="${ucdto.email}" required />
 							<span>@</span>
-							<input type="text" id="main_tail" name="mail_tail" required />
-							<select>
-								<option selected>직접입력</option>
-								<option>지메일</option>
-								<option>네이버</option>
-								<option>네이트</option>
-								<option>다음</option>
+							<input type="text" id="main_tail"  name="mail_tail" required />
+							<select id="eSelect">
+								<option selected value="1">직접입력</option>
+								<option>gmail.com</option>
+								<option>naver.com</option>
+								<option>nate.com</option>
+								<option>daum.net</option>
 							</select>
 						</dd>
 					</dl>
@@ -138,7 +139,7 @@
 						</dt>
 						<dd>
 							<input type="text" id="f_postal" name="f_postal" required />
-							<input type="button" value="우편번호"/>
+							<input type="button" id="addressBtn" value="우편번호"/>
 							<input type="text" id="address1" name="address1" required />
 							<input type="text" id="address2" name="address2" required />
 						</dd>
@@ -168,7 +169,7 @@
 							<div></div> <!-- 필수항목 -->
 							<label for="f_tell" value="${ucdto.phone}">휴대전화</label>
 						</dt>
-						<dd>
+						<dd id="phoneCk">
 							<input type="text" id="f_tell" name="f_tell" maxlength="3" required />
 							<span> - </span>
 							<input type="text" id="m_tell" name="m_tell" maxlength="4" required />
@@ -185,7 +186,7 @@
 					
 					<dl id="join_interests_dl">
 						<dt>
-							<label id="genderLb" value="${mdto.local}">지역</label>
+							<label id="genderLb" value="${mdto.local}">나의 지역</label>
 						</dt>
 						<dd>
 							<ul>

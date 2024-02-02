@@ -56,21 +56,21 @@ public class User_campServiceImpl implements User_campService {
 			//섹션 저장
 			session.setAttribute("pwsearch_pwcode", pwcode);
 			//이메일
-			MimeMessage message = MailSender.createMimeMessage();
-			try {
-				message.setSubject("[안내] 비밀번호찾기 임시비밀번호 안내","utf-8");
-				//html코드 가져오기
-				String htmlData =getHtmlData(pwcode);
-				message.setText(htmlData,"utf-8","html");
-				message.setFrom(new InternetAddress("onulee@naver.com")); //보내는 사람
-				message.addRecipient(RecipientTerm.TO, new InternetAddress(email)); //받는 사람
-				//메일발송
-				mailSender.send(message);
-				//패스워드 변경 - update
-				memberMapper.update_pw(id,pwcode);
-				System.out.println("이메일 발송이 완료되었습니다.");
-				
-			} catch (Exception e) {e.printStackTrace();}
+			//MimeMessage message = MailSender.createMimeMessage();
+//			try {
+//				message.setSubject("[안내] 비밀번호찾기 임시비밀번호 안내","utf-8");
+//				//html코드 가져오기
+//				String htmlData =getHtmlData(pwcode);
+//				message.setText(htmlData,"utf-8","html");
+//				message.setFrom(new InternetAddress("onulee@naver.com")); //보내는 사람
+//				message.addRecipient(RecipientTerm.TO, new InternetAddress(email)); //받는 사람
+//				//메일발송
+//				mailSender.send(message);
+//				//패스워드 변경 - update
+//				memberMapper.update_pw(id,pwcode);
+//				System.out.println("이메일 발송이 완료되었습니다.");
+//				
+//			} catch (Exception e) {e.printStackTrace();}
 		}else { result = "fail";}//이메일 틀려서 이메일발송이 안 됨.
 		System.out.println("serviceImpl pw_s result : "+result);
 		

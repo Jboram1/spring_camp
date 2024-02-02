@@ -8,6 +8,8 @@
 		 
 		 //가입하기 버튼 클릭
 		 $("#savebtn").click(function(){
+			 
+			 //정규식표현
 			 let idpattern = /^[a-zA-Z]{1}[a-zA-Z0-9]{3,7}$/;
 			 let pwpattern = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@$%^&().,]).{5,11}$/;
 			 let namepattern = /^[ㄱ-ㅎ가-힣]{1,}$/;
@@ -34,38 +36,71 @@
 				 alert("비밀번호는 영문,숫자,특수문자 1개 이상 입력하셔야 합니다.");
 				 return false;
 			 }
+			 
+			 if($("#pw2").val().length<1){
+					 alert("비밀번호 일치 확인하셔야 합니다.");
+					 $("#pw2").focus();
+					 return false;
+			}
+			
 			 if(!nicknamepattern.test(nickname)){
 				 alert("닉네임은 한글,영문,숫자를 포함한 5자까지만 사용가능합니다.");
 				 return false;
 			 }
 			 
 			 
-			  //비밀번호 일치 확인
-			 function passConfrim(){
-				 
-				let password = document.getElementById('pw1');
-				let passwordConfirm = document.getElementById('pw2');
-				let confrimMsg = document.getElementById('confirmMsg');
-				let correctColor = "#00ff00";
-				let wrongColor ="#ff0000";
-				
-				if(password.value == passwordConfirm.value){
-					confirmMsg.style.color = correctColor;
-					$("#confirmMsg").text("비밀번호 일치");
-				}else{
-					confirmMsg.style.color = wrongColor;
-					//confirmMsg.innerHTML ="비밀번호 불일치";
-					$("#confirmMsg").text("비밀번호 불일치");
-				}
-			}  //비밀번호 일치 확인
+			 
+			 if($("#nickname").val().length<1){
+					 alert("닉네임을 입력하셔야 합니다.");
+					 $("#nickname").focus();
+					 return false;
+			}
+			
+			 if($("#mail_id").val().length<1){
+					 alert("이메일을 입력하셔야 합니다.");
+					 $("#mail_id").focus();
+					 return false;
+			}
+			
+			 if($("#address2").val().length<1){
+					 alert("상세주소를 입력하셔야 합니다.");
+					 $("#address2").focus();
+					 return false;
+			}
+			
+			 if($("input[name='gender']:checked").length!=1){
+					 alert("성별체크를 하셔야합니다.");
+					 return false;
+			 }
+			
+			 if($("#f_tell").val().length<1){
+					 alert("휴대폰 번호를 입력하셔야 합니다.");
+					 $("#f_tell").focus();
+					 return false;
+			}
+			 if($("#m_tell").val().length<1){
+					 alert("휴대폰 번호를 입력하셔야 합니다.");
+					 $("#m_tell").focus();
+					 return false;
+			}
+			 if($("#l_tell").val().length<1){
+					 alert("휴대폰 번호를 입력하셔야 합니다.");
+					 $("#l_tell").focus();
+					 return false;
+			}
+			
+			
+			if ($("input[name='searchDo']:checked").length !== 0 && $("input[name='searchDo']:checked").length !== 1) {
+			    alert("지역은 1개만 설정할 수 있습니다.");
+			    return false;
+			}
+			 
 			 
 			//phone input value값에 넣음
 		   $("#phone").val($("#f_tell").val()+"-"+$("#m_tell").val()+"-"+$("#l_tell").val());
 		   
 		   //email input value값에 넣음
 		   $("#mail_id").val()+"@"+$("#main_tail").val();
-			 
-			 
 			 
 			 //ajax
 			 $.ajax({
@@ -87,6 +122,18 @@
 			 });//ajax
 		 });//savebtn
 		 
+		 
+		 //비밀번호 일치 확인
+		  $("#pw2").keyup(function(){
+				 
+				 if($("#pw1").val()!=$("#pw2").val()){
+					 $("#pwCheck").text("비밀번호가 일치 하지 않습니다.");
+					 $("#pwCheck").css("color", "#FF4500");
+				 }else{
+					 $("#pwCheck").text("비밀번호가 일치합니다.");
+					 $("#pwCheck").css("color", "#009223");
+				 }//if
+			 });//#pw2-비밀번호확인
 		 
 		 
 		 //아이디체크
@@ -124,10 +171,30 @@
 		 });//idCheckBtn
 		 
 		 
-		 
+		 //다음주소 api
+		 $("#addressBtn").click(function(){
+		 new daum.Postcode({
+	        oncomplete: function(data) {
+	            $("#f_postal").val(data.zonecode);
+	            $("#address1").val(data.address);
+	        }
+	    }).open();
+
+		});//다음주소
 		 
 		
-		 
+		 //이메일 선택
+		 $('#eSelect').change(function() {
+			 $("#eSelect option:selected").each(function(){
+				if($(this).val()== '1'){ //직접입력
+					$("#main_tail").val('');
+					$("#main_tail").attr("disabled",false); //활성화
+				}else{//직접입력이 아닐경우
+					$("#main_tail").val($(this).text());
+					$("#main_tail").attr("disabled",true);
+				}
+			 });
+        });//이메일 선택
 		 
 		 
 		 
