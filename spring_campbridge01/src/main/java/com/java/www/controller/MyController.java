@@ -1,25 +1,18 @@
 package com.java.www.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.java.www.dto.KakaoDto;
-import com.java.www.dto.LogoutDto;
-import com.java.www.dto.TokenDto;
 import com.java.www.dto.User_campDto;
 import com.java.www.service.EmailService;
 import com.java.www.service.User_campService;
@@ -113,13 +106,6 @@ public class MyController {
 	}// login()
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	//비밀번호 찾기
 	@PostMapping("pw_s")
 	@ResponseBody
@@ -154,13 +140,6 @@ public class MyController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	//pw 찾기완료
 	@GetMapping("pwsearch")
 	public String pwsearch() {
@@ -168,6 +147,10 @@ public class MyController {
 	}// login()
 	
 	
+	
+	
+	
+	//==================================회원가입
 	//회원가입 페이지
 	@GetMapping("signUp")
 	public String signUp() {
@@ -177,11 +160,56 @@ public class MyController {
 	
 	//회원가입 저장
 	@PostMapping("signUp")
-	@ResponseBody
-	public String signUp(User_campDto ucdto) {
+	public String signUp(User_campDto ucdto, @RequestPart MultipartFile file, Model model, 
+			String mail_id, String mail_tail,
+			String address1, String address2,
+			String f_tell, String m_tell, String l_tell) throws Exception {
+		String email = mail_id+"@"+mail_tail;
+		String address = address1+"　"+address2;
+		String phone =  f_tell+"-"+m_tell+"-"+l_tell;
 		
-		String result = userCampService.signUp(ucdto);
-		return result;
+		ucdto.setEmail(email);
+		ucdto.setAddress(address);
+		ucdto.setPhone(phone);
+		
+		
+		//파일업로드 정보 - 파일저장위치
+		String fileUrl = "c:/upload/";
+		String mfileName = "";
+		System.out.println("이름 : "+ucdto.getName());
+		System.out.println("아이디 : "+ucdto.getId());
+		System.out.println("닉네임 : "+ucdto.getNickname());
+		System.out.println("성별 : "+ucdto.getGender());
+		
+		//파일첨부가 되었는지 확인
+		if(!file.isEmpty()) {
+			int i = 0;
+				String orgfileName = file.getOriginalFilename();
+				long time = System.currentTimeMillis();
+				String uploadFileName = time+"_"+orgfileName;
+				System.out.println("파일이름 : "+uploadFileName);
+				
+				//파일업로드 - 파일이 c:/upload폴더에 추가됨.
+				File f = new File(fileUrl+uploadFileName);
+				file.transferTo(f);
+				
+				if(i==0) mfileName += uploadFileName;
+				else mfileName +=","+uploadFileName;
+				
+				i++;
+				
+		}//if
+		
+		//파일첨부가 없으면 빈공백, 1.jpg
+		ucdto.setM_img(mfileName);
+		System.out.println("최종이름 : "+mfileName);
+		
+		//회원가입 저장 service호출
+		userCampService.signUpinsert(ucdto);
+		
+		model.addAttribute("signUp","success");
+		
+		return "/my/signUp02";
 	}// signUp()
 	
 	

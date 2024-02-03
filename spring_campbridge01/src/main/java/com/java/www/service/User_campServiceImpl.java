@@ -161,13 +161,6 @@ public class User_campServiceImpl implements User_campService {
 
 
 	//============================회원가입
-	@Override //회원가입 저장
-	public String signUp(User_campDto ucdto) {
-		userCampMapper.signUp(ucdto);
-		String result="가입완료";
-		return result;
-	}
-
 	@Override //아이디체크
 	public String idCheck(String id) {
 		String result = "사용불가";
@@ -175,6 +168,14 @@ public class User_campServiceImpl implements User_campService {
 		if(ucdto==null) result="사용가능";
 		
 		return result;
+	}
+
+
+
+	@Override //회원가입 저장
+	public void signUpinsert(User_campDto ucdto) {
+		userCampMapper.signUpinsert(ucdto);
+		
 	}
 
 

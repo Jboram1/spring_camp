@@ -16,12 +16,12 @@
 			 let nicknamepattern = /^[ㄱ-ㅎ가-힣a-zA-Z0-9]{0,4}$/;
 			 
 			 let id = $("#id").val();
-			 let pw = $("#pw1").val();
 			 let name = $("#name").val();
+			 let pw = $("#pw").val();
 			 let nickname = $("#nickname").val();
 			 
 			 if(!namepattern.test(name)){
-				 alert("이름은 한글만 가능합니다.");
+				 alert("이름을 입력해주세요. 이름은 한글만 가능합니다.");
 				 return false;
 			 }
 			 if(!idpattern.test(id)){
@@ -96,37 +96,14 @@
 			}
 			 
 			 
-			//phone input value값에 넣음
-		   $("#phone").val($("#f_tell").val()+"-"+$("#m_tell").val()+"-"+$("#l_tell").val());
-		   
-		   //email input value값에 넣음
-		   $("#mail_id").val()+"@"+$("#main_tail").val();
-			 
-			 //ajax
-			 $.ajax({
-				 url:"/my/signUp",
-				 type:"post",
-				 data:$("#userSignupFrm").serialize(),
-				 dataType:"text",
-				 success:function(data){
-					 alert("성공");
-					 console.log("data :"+data);
-					 if(data=="가입완료"){
-						 alert("회원가입이 완료 되었습니다.");
-						 location.href="signUp02";
-					 }
-				 },
-				 error:function(){
-					 alert("실패");
-				 }
-			 });//ajax
+			 userSignupFrm.submit();
 		 });//savebtn
 		 
 		 
 		 //비밀번호 일치 확인
 		  $("#pw2").keyup(function(){
 				 
-				 if($("#pw1").val()!=$("#pw2").val()){
+				 if($("#pw").val()!=$("#pw2").val()){
 					 $("#pwCheck").text("비밀번호가 일치 하지 않습니다.");
 					 $("#pwCheck").css("color", "#FF4500");
 				 }else{
@@ -196,13 +173,35 @@
 			 });
         });//이메일 선택
 		 
+		 		 
+	 });//j
 		 
 		 
-		 
+		 //프로필 사진
+		 document.addEventListener('DOMContentLoaded', function() {
+            var fileInput = document.getElementById('m_img');
+            var preview = document.getElementById('previewImage');
+
+            fileInput.addEventListener('change', function(event) {
+                previewImage(event);
+            });
+
+            function previewImage(event) {
+                var input = event.target;
+                var reader = new FileReader();
+
+                reader.onload = function(){
+                    preview.src = reader.result;
+                };
+
+                // Read the image file as a data URL
+                if (input.files && input.files[0]) {
+                    reader.readAsDataURL(input.files[0]);
+                }
+               }
+       		 });//프로필 사진
 		
 		 
 		 
 		 
 		 
-		 
-	 });//j

@@ -26,9 +26,9 @@
 	  
 	
 <!-- 회원가입 저장 -->	
-	<insert id="signUp">
+	<insert id="signUpinsert">
 		insert into User_camp values
-		(#{id},#{pw},#{name},#{nickname},#{email},#{address},#{gender},#{phone},#{local},#{m_img},#{mcode},sysdate)
+		(#{id},#{pw},#{name},#{nickname},#{email},#{address},#{gender},#{phone},#{local},#{m_img},0,sysdate)
 	</insert>
 	
 <!-- 아이디체크 -->
