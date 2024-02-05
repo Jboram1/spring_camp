@@ -14,7 +14,9 @@ public interface User_campMapper {
 	User_campDto idsearch(String name, String email);
 
 	//비밀번호 찾기
-	User_campDto pw_s(String id, String email);
+	User_campDto pwsearch(String id, String email);
+	
+	void update_pw(String id, String pwcode);
 	
 	
 	
@@ -24,6 +26,7 @@ public interface User_campMapper {
 
 	//아이디체크
 	User_campDto idCheck(String id);
+
 
 
 

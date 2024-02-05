@@ -29,6 +29,8 @@
 	    <link href="../assets/css/main2.css" rel="stylesheet">
 	    <link href="../assets/css/header.css" rel="stylesheet">
 		<link href="../assets/css/my/idsearch.css" rel="stylesheet">
+		
+		
 	    
 	   
 	    
@@ -39,18 +41,11 @@
 	<!-- End Header -->
 			<section class="signUp_02">
 					<img src="../assets/img/guide_icon.png">
-					<h1><span style="color:red;">회원님의 ID</span>를 안내해드립니다!</h1>
+					<h1><span style="color:red;">회원님 ID</span>를 안내해드립니다!</h1>
 					
 					<div class="amount3">
-						<p>회원님의 아이디를 확인해주세요.</p>
-						<c:choose>
-							<c:when test="${empty findId}">
-							<p class="idguide">조회결과가 없습니다.</p>
-							</c:when>
-							<c:otherwise>
-								<p class="idguide">아이디 : ${findId.id}</p>
-							</c:otherwise>
-						</c:choose>
+						<p>회원님의 아이디 입니다.</p>
+						<p class="idguide">아이디 :${param.id}</p>
 						
 					</div>
 					

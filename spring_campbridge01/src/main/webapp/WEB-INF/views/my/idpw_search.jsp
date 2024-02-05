@@ -29,6 +29,8 @@
 	    <link href="../assets/css/main2.css" rel="stylesheet">
 	    <link href="../assets/css/header.css" rel="stylesheet">
 	    <link href="../assets/css/my/idpw_search.css" rel="stylesheet">
+	    
+	    <script src="../assets/js/my/login.js"></script>
 	</head>
 	<body>
 	<!-- ======= Header ======= -->
@@ -63,85 +65,7 @@
 					</div><!-- searchIP_informbox -->
 					</div>
 					
-					<script>
-						$(function(){
-							$("#idSBtn").click(()=>{
-								alert("아이디찾기시작");
-								
-								var enteredName = $("#idName").val();
-						        var enteredEmail = $("#idEmail").val();
-								if(enteredName.length<1){
-								alert("이름을 입력하세요.")
-								$("#idName").focus();
-								return false
-								}//if-이름 유효성
-								
-								//if(enteredEmail.length<1){
-								//alert("이메일을 입력하세요.")
-								//$("#idEmail").focus();
-								//return false
-								//}//if-이메일 유효성
-							
-								let name = $("#idName").val();
-								let email = $("#idEmail").val();
-								
-								
-								//ajax
-								$.ajax({
-									url:"/my/id_s",
-									data:{"name":name,"email":email},
-									type:"post",
-									dataType:"text",
-									success:function(data){
-										console.log(data);
-										if(data=="아이디없음"){
-											alert("아이디가 존재하지 않습니다. 회원가입을 해주세요.");
-										}else{
-											alert("아이디를 찾았습니다.");
-											location.href="/my/idsearch?id="+data;
-										}
-									},
-									error:function(){
-										alert("실패");
-									}
-								});//ajax
-							});//idBtn
-							
-							
-							
-							
-							
-							$("#pwSBtn").click(function(){
-								alert("비밀번호 찾기를 시작");
-								
-								var pwsId = $("#pwId").val();
-						        var pwsEmail = $("#pwNEmail").val();
-								if(pwsId.length<1){
-								alert("아이디를 입력하세요.")
-								$("#pwsId").focus();
-								return false
-								}//유효성
-								
-								//ajax
-								$.ajax({
-									url:"/my/pw_s",
-									data:{"pwId":pwsId,"pwNEmail":pwsEmail},
-									type:"post",
-									dataType:"text",
-									success:function(data){
-										if(data=="success") alert("메일이 발송되었습니다.");
-										else alert("아이디 또는 이메일주소가 틀립니다. 다시 입력하세요.");
-										console.log(data);
-									},
-									error:function(){
-										alert("실패");
-									}
-								});//ajax
-							});//pwSBtn
-							
-							
-						});//j
-					</script>
+				
 					
 
 					<div id="pwsearch">

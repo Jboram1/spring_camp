@@ -1,7 +1,7 @@
 package com.java.www.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.java.www.dto.User_campDto;
@@ -9,7 +9,7 @@ import com.java.www.mapper.User_campMapper;
 
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import jakarta.mail.search.RecipientTerm;
+import jakarta.mail.internet.MimeMessage.RecipientType;
 import jakarta.servlet.http.HttpSession;
 
 @Service
@@ -20,6 +20,9 @@ public class User_campServiceImpl implements User_campService {
 	
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	JavaMailSender mailSender;
 	
 	
 	
@@ -32,19 +35,17 @@ public class User_campServiceImpl implements User_campService {
 
 	
 	@Override //아이디찾기 -name,mail
-	public String idsearch(String name, String email) {
-		String result = "아이디찾음";
-		User_campDto ucdto = userCampMapper.idsearch(name,email);
-		if(ucdto==null) result="아이디없음";
+	public User_campDto idsearch(String name, String email) {
+		User_campDto usercampDto = userCampMapper.idsearch(name,email);
 		
-		return result;
+		return usercampDto;
 	}
 
 
 
 	@Override //비밀번호찾기 - id,mail
-	public String pw_s(String id, String email) {
-		User_campDto usercampDto = userCampMapper.pw_s(id,email);
+	public String pwsearch(String id, String email) {
+		User_campDto usercampDto = userCampMapper.pwsearch(id,email);
 		String result = "";
 		
 		if(usercampDto!=null) {
@@ -54,23 +55,23 @@ public class User_campServiceImpl implements User_campService {
 			String pwcode = getCreateKey();
 			System.out.println("pwsearch pwcode : "+pwcode);
 			//섹션 저장
-			session.setAttribute("pwsearch_pwcode", pwcode);
+			//session.setAttribute("pwsearch_pwcode", pwcode);
 			//이메일
-			//MimeMessage message = MailSender.createMimeMessage();
-//			try {
-//				message.setSubject("[안내] 비밀번호찾기 임시비밀번호 안내","utf-8");
-//				//html코드 가져오기
-//				String htmlData =getHtmlData(pwcode);
-//				message.setText(htmlData,"utf-8","html");
-//				message.setFrom(new InternetAddress("onulee@naver.com")); //보내는 사람
-//				message.addRecipient(RecipientTerm.TO, new InternetAddress(email)); //받는 사람
-//				//메일발송
-//				mailSender.send(message);
-//				//패스워드 변경 - update
-//				memberMapper.update_pw(id,pwcode);
-//				System.out.println("이메일 발송이 완료되었습니다.");
-//				
-//			} catch (Exception e) {e.printStackTrace();}
+			MimeMessage message = mailSender.createMimeMessage();
+			try {
+				message.setSubject("[안내] 비밀번호찾기 임시비밀번호 안내","utf-8");
+				//html코드 가져오기
+				String htmlData =getHtmlData(pwcode);
+				message.setText(htmlData,"utf-8","html");
+				message.setFrom(new InternetAddress("baamis@naver.com")); //보내는 사람
+				message.addRecipient(RecipientType.TO, new InternetAddress(email)); //받는 사람
+				//메일발송
+				mailSender.send(message);
+				//패스워드 변경 - update
+				userCampMapper.update_pw(id,pwcode);
+				System.out.println("이메일 발송이 완료되었습니다.");
+				
+			} catch (Exception e) {e.printStackTrace();}
 		}else { result = "fail";}//이메일 틀려서 이메일발송이 안 됨.
 		System.out.println("serviceImpl pw_s result : "+result);
 		

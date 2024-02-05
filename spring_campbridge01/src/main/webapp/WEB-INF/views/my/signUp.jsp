@@ -33,7 +33,7 @@
 	    <link href="../assets/css/main2.css" rel="stylesheet">
 	    <link href="../assets/css/header.css" rel="stylesheet">
 	    <link href="../assets/css/my/signUp.css" rel="stylesheet" type="text/css">
-	    <script src="../assets/js/signUp.js"></script>
+	    <script src="../assets/js/my/signUp.js"></script>
         
 		<title>회원가입 - 회원정보입력</title>
 	</head>
@@ -121,7 +121,7 @@
 						<dd>
 							<input type="text" id="mail_id" name="mail_id" required />
 							<span>@</span>
-							<input type="text" id="main_tail"  name="mail_tail" required />
+							<input type="text" id="main_tail" name="mail_tail" required />
 							<select id="eSelect">
 								<option selected value="1">직접입력</option>
 								<option value="gmail.com">gmail.com</option>
@@ -243,7 +243,7 @@
 									<label for="c_do14">전라남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do015" class="check01" value="경상북도" title="15">
+									<input type="checkbox" name="local" id="c_do15" class="check01" value="경상북도" title="15">
 									<label for="c_do15">경상북도</label>
 								</li>
 								<li>

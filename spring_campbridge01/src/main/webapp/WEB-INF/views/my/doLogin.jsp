@@ -33,6 +33,8 @@
 	    <link href="../assets/css/main2.css" rel="stylesheet">
 	    <link href="../assets/css/header.css" rel="stylesheet">
         <link href="../assets/css/my/login.css" rel="stylesheet">
+        
+        <script src="../assets/js/my/login.js"></script>
 
 		 <!--Google login  -->
        	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>

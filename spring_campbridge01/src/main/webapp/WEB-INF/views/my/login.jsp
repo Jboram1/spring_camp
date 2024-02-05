@@ -33,73 +33,10 @@
 	    <link href="../assets/css/main2.css" rel="stylesheet">
 	    <link href="../assets/css/header.css" rel="stylesheet">
         <link href="../assets/css/my/login.css" rel="stylesheet">
+        <script src="../assets/js/my/login.js"></script>
         
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
         
-        
-        
-    	<script>
-			$(function(){
-				
-				
-				
-				$("#signUpBtn").click(function(){
-					alert("회원가입 페이지로 이동합니다.")
-					location.href="signUp";
-				});//#회원가입
-		    //----------------아이디 저장하기--------------------
-				var savedId = localStorage.getItem("rememberedId");
-				if(savedId){
-					$("#id").val(savedId);
-					$("#remember-check").prop("checked",true);
-				}//if
-				
-				$("#loginBtn").click(function(){
-					var enteredId = $("#id").val();
-			        var enteredPw = $("#pw").val();
-					if(enteredId.length<1){
-					alert("아이디를 입력하세요.")
-					$("#id").focus();
-					return false
-					}//if-로그인 유효성
-					
-					if(enteredPw.length<4){
-					alert("비밀번호를 다시 입력하세요.")
-					$("#pw").focus();
-					return false
-					}//if-비밀번호 유효성
-					
-					if($("#remember-check").is(":checked")){
-						localStorage.setItem("rememberedId", enteredId);
-					}else{localStorage.removeItem("rememberedId");}//if-else
-					
-					loginFrm.submit();
-				});//로그인버튼
-				
-				
-				
-				
-				
-				//----아이디 저장하기 체크박스 시작-------	
-			});//제이쿼리 구문
-			  function onSuccess(googleUser) {
-			      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-			    }
-			    function onFailure(error) {
-			      console.log(error);
-			    }
-			    function renderButton() {
-			      gapi.signin2.render('my-signin2', {
-			        'scope': 'profile email',
-			        'width': 350,
-			        'height': 53,
-			        'longtitle': true,
-			        'theme': 'dark',
-			        'onsuccess': onSuccess,
-			        'onfailure': onFailure,
-			      });
-			    }			
-		</script>
 		 <!--Google login 
        	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
        	 -->
@@ -130,10 +67,6 @@
                 			alert("카카오로그인");
                 			location.href="https://kauth.kakao.com/oauth/authorize?client_id=6a62d12451f24681e508a5652789bd95&redirect_uri=http://localhost:8000/kakao/oauth&response_type=code";
                 		});
-                		
-                		
-                		
-                		
                 	});//j
                 </script>
                 <button type="button" id="kakaologinBtn">

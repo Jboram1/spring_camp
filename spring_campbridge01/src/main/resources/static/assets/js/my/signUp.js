@@ -4,6 +4,7 @@
 
  
  	$(function(){
+		 let chkid="";
 		 let chkKeyUp=0;
 		 
 		 //가입하기 버튼 클릭
@@ -32,6 +33,12 @@
 				 alert("아이디 중복체크를 하셔야 다음으로 진행이 가능합니다.");
 				 return false;
 			 }
+			 
+			 if(chkid!=id){
+				 alert("아이디 중복체크를 다시 해주세요.");
+				 return false;
+			 }
+				 			 
 			 if(!pwpattern.test(pw)){
 				 alert("비밀번호는 영문,숫자,특수문자 1개 이상 입력하셔야 합니다.");
 				 return false;
@@ -115,7 +122,7 @@
 		 
 		 //아이디체크
 		 $("#idCheckBtn").click(function(){
-			 console.log($("id").val());
+			 console.log($("#id").val());
 			 
 			 //아이디가 있는지 체크
 			 if($("#id").val().length<1){
@@ -134,6 +141,8 @@
 					 if(data=="사용가능"){
 						 $("#chkTxt").text("아이디 사용가능");
 						 $("#chkTxt").css({"color":"blue","font-weight":"700"});
+						 
+						 chkid=$("#id").val();
 					 }else{
 						 $("#chkTxt").text("아이디 사용불가");
 						 $("#chkTxt").css({"color":"red","font-weight":"700"});
@@ -163,12 +172,12 @@
 		 //이메일 선택
 		 $('#eSelect').change(function() {
 			 $("#eSelect option:selected").each(function(){
-				if($(this).val()== '1'){ //직접입력
+				if($(this).val()=== '1'){ //직접입력
 					$("#main_tail").val('');
-					$("#main_tail").attr("disabled",false); //활성화
+					$("#main_tail").attr("readonly",false); //활성화 //꼭 readonly로 해야함!
 				}else{//직접입력이 아닐경우
-					$("#main_tail").val($(this).text());
-					$("#main_tail").attr("disabled",true);
+					$("#main_tail").val($(this).val());
+					$("#main_tail").attr("readonly",true);
 				}
 			 });
         });//이메일 선택

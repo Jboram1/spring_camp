@@ -88,15 +88,25 @@ public class MyController {
 	
 	
 	
-	@PostMapping("id_s") //ajax 아이디찾기- name,email
+	@PostMapping("idSearch") //ajax 아이디찾기- name,email
 	@ResponseBody
-	public String id_s(String name, String email) {
+	public String idSearch(String name, String email) {
 		System.out.println("FC idsearch name : "+name);
 		System.out.println("FC idsearch email : "+email);
-		String result = userCampService.idsearch(name,email);
+		User_campDto usercampDto = userCampService.idsearch(name,email);
+		String result = "";
+		String tempId=""; //임시아이디
+		if(usercampDto!=null) {
+			tempId = usercampDto.getId().substring(0,usercampDto.getId().length()-2);
+			tempId += "**";
+			System.out.println("찾은 아이디 : "+tempId);
+			result = tempId;
+		}else {
+			result="fail";
+		}
 					
 		return result;
-	}// id_s()
+	}// idSearch()
 
 	
 	//id 찾기완료
@@ -107,12 +117,13 @@ public class MyController {
 	
 	
 	//비밀번호 찾기
-	@PostMapping("pw_s")
+	@PostMapping("pwsearch")
 	@ResponseBody
-	public String pw_s(String id, String email) {
-		System.out.println("MyController id_s : "+id);
+	public String pwsearch(String id, String email) {
+		System.out.println("MyController id : "+id);
+		System.out.println("MyController email : "+email);
 		//service연결 비밀번호 찾기-아이디,이메일검색
-		String result = userCampService.pw_s(id,email);
+		String result = userCampService.pwsearch(id,email);
 		return result;
 	}
 	
@@ -180,6 +191,7 @@ public class MyController {
 		System.out.println("아이디 : "+ucdto.getId());
 		System.out.println("닉네임 : "+ucdto.getNickname());
 		System.out.println("성별 : "+ucdto.getGender());
+		System.out.println("이메일 : "+ucdto.getEmail());
 		
 		//파일첨부가 되었는지 확인
 		if(!file.isEmpty()) {

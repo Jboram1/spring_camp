@@ -38,7 +38,7 @@ public class EmailServiceImpl implements EmailService {
 					+ "			</tr>\r\n"
 					+ "			</table>	";
 			message.setText(htmlData,"utf-8","html");                            //내용
-			message.setFrom(new InternetAddress("bijou7523@gmail.com"));         //보낸이
+			message.setFrom(new InternetAddress("baamis@naver.com"));         //보낸이
 			message.addRecipient(RecipientType.TO, new InternetAddress(email));  //받는이
 			mailSender.send(message);                                            //메일발송
 			session.setAttribute("email_pwcode", pwcode);
