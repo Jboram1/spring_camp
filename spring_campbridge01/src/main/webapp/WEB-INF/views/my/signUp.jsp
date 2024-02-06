@@ -54,6 +54,7 @@
 				<fieldset class="fieldset_class">
 					<dl id="join_picture_dl">
 						<dt>
+							<div></div> <!-- 필수항목 -->
 							<label for="name">프로필 사진</label>
 						</dt>
 						<dd class="photoBoxMI">
@@ -182,6 +183,7 @@
 					
 					<dl id="join_interests_dl">
 						<dt>
+							<div></div> <!-- 필수항목 -->
 							<label id="genderLb" >나의 지역</label>
 						</dt>
 						<dd>

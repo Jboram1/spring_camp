@@ -49,7 +49,7 @@
 	 <section class="loginback" >
 	 	
         <div class="login_wap">
-       		<img src="../assets/img/login/login02.png" style="margin-top: 30px;">
+       		<img src="../assets/img/login/logo.png" style="margin-top: 40px;">
             <h2>로 그 인</h2>
             <form name="loginFrm" method="post" id="log_f" action="doLogin">
                 <input type="text" name="id" placeholder="아이디" id="id">

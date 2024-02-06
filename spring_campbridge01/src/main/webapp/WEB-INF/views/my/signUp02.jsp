@@ -38,7 +38,7 @@
 	<%@include file="../include/header.jsp" %>
 	<!-- End Header -->
 			<section class="signUp_02">
-					<img src="../assets/img/signup_icon.png">
+					<img src="../assets/img/login/signup_icon.png">
 					<h1><span>회원가입</span> 완료 되었습니다!</h1>
 					
 					<div class="amount3">

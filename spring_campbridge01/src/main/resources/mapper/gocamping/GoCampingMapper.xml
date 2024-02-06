@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<!-- MemberMapper.java(InterFace) 연결 -->
+<mapper namespace="com.java.www.mapper.GoCampingMapper">
+
+<!-- 캠핑 데이터 1개 저장 -->
+
+	<insert id="insertCamping">
+		insert into gocamping values 
+		(#{contentId},#{facltNm},#{lineIntro},#{intro},#{facltDivNm},#{mangeDivNm},#{featureNm},#{induty},#{lctCl},#{doNm},#{sigunguNm},
+		#{zipcode},#{addr1},#{addr2},#{mapX},#{mapY},#{direction},#{tel},#{homepage},#{resveUrl},#{resveCl},#{gnrlSiteCo},#{autoSiteCo},
+		#{glampSiteCo},#{caravSiteCo},#{indvdlCaravSiteCo},#{siteBottomCl1},#{siteBottomCl2},#{siteBottomCl3},#{siteBottomCl4},#{siteBottomCl5},
+		#{tooltip},#{glampInnerFclty},#{caravInnerFclty},#{operPdCl},#{operDeCl},#{trlerAcmpnyAt},#{caravAcmpnyAt},#{toiletCo},#{swrmCo},
+		#{wtrplCo},#{brazierCl},#{sbrsCl},#{sbrsEtc},#{posblFcltyCl},#{posblFcltyEtc},#{themaEnvrnCl},#{eqpmnLendCl},#{animalCmgCl},#{tourEraCl},
+		#{firstImageUrl},#{createdtime})
+		
+	</insert>
+
+</mapper>

@@ -188,10 +188,6 @@ public class MyController {
 		String fileUrl = "c:/upload/";
 		String mfileName = "";
 		System.out.println("이름 : "+ucdto.getName());
-		System.out.println("아이디 : "+ucdto.getId());
-		System.out.println("닉네임 : "+ucdto.getNickname());
-		System.out.println("성별 : "+ucdto.getGender());
-		System.out.println("이메일 : "+ucdto.getEmail());
 		
 		//파일첨부가 되었는지 확인
 		if(!file.isEmpty()) {

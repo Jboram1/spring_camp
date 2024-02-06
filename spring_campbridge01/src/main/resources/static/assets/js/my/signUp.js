@@ -97,8 +97,8 @@
 			}
 			
 			
-			if ($("input[name='searchDo']:checked").length !== 0 && $("input[name='searchDo']:checked").length !== 1) {
-			    alert("지역은 1개만 설정할 수 있습니다.");
+			if ($("input[name='searchDo']:checked").length !== 1) {
+			    alert("지역 선택하셔야 합니다. 지역은 1개만 선택 가능합니다.");
 			    return false;
 			}
 			 
@@ -214,3 +214,20 @@
 		 
 		 
 		 
+		 
+		 //지역 체크박스
+		 var checkboxes = document.querySelectorAll('input[type="checkbox"][name="local"]');
+			
+			checkboxes.forEach(function(checkbox) {
+		    checkbox.addEventListener('click', function() {
+		        // 클릭된 체크박스가 선택된 경우에만 다른 모든 체크박스의 선택을 해제합니다.
+		        if (this.checked) {
+		            checkboxes.forEach(function(otherCheckbox) {
+		                // 현재 체크박스가 아닌 다른 체크박스의 선택을 해제합니다.
+		                if (otherCheckbox !== checkbox) {
+		                    otherCheckbox.checked = false;
+		                }
+		            });
+		        }
+		    });
+		});//지역 체크박스

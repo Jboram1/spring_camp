@@ -29,6 +29,8 @@
 	    <link href="/assets/css/main2.css" rel="stylesheet">
 		<link href="/assets/css/header.css" rel="stylesheet">
 		<link href="/assets/css/search/campsearch.css" rel="stylesheet">
+		
+		<script src="../assets/js/my/campsearch.js"></script>
 	    
 	    <style>
         
@@ -183,44 +185,6 @@
 				</div> <!--//tm_ver-->
 			</li>
 			
-			<li>
-				<div class="tm_ver f_open">
-					<div class="folder_w">
-						<strong>테마별</strong>
-						<div class="check_w">
-							<ul>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode01" value="80" title="80" class="check01"
-										 /><label for="searchThemeEnvrnClCode01">일출명소</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode02" value="81" title="81" class="check01"
-										 /><label for="searchThemeEnvrnClCode02">일몰명소</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode03" value="82" title="82" class="check01"
-										 /><label for="searchThemeEnvrnClCode03">수상레저</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode04" value="83" title="83" class="check01"
-										 /><label for="searchThemeEnvrnClCode04">항공레저</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode05" value="84" title="84" class="check01"
-										 /><label for="searchThemeEnvrnClCode05">스키</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode06" value="85" title="85" class="check01"
-										 /><label for="searchThemeEnvrnClCode06">낚시</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode07" value="154" title="154" class="check01"
-										 /><label for="searchThemeEnvrnClCode07">액티비티</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode08" value="86" title="86" class="check01"
-										 /><label for="searchThemeEnvrnClCode08">봄꽃여행</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode09" value="87" title="87" class="check01"
-										 /><label for="searchThemeEnvrnClCode09">여름물놀이</label></li>
-							</ul>
-							<ul>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode010" value="88" title="88" class="check01"
-										 /><label for="searchThemeEnvrnClCode010">가을단풍명소</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode011" value="89" title="89" class="check01"
-										 /><label for="searchThemeEnvrnClCode011">겨울눈꽃명소</label></li>
-								<li><input type="checkbox" name="searchThemeEnvrnClCode" id="searchThemeEnvrnClCode012" value="90" title="90" class="check01"
-										 /><label for="searchThemeEnvrnClCode012">걷기길</label></li>
-								</ul>
-						</div>
-					</div>
-					<!--//folder_w-->
-				</div> <!--//tm_ver-->
-			</li>
 					
 			<li>
 				<div class="tm_ver f_open">
@@ -263,116 +227,7 @@
                         <a href="/search/campsearch_view">바로가기</a>
                     </div>
                 </li>
-                <li class="item item2">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item3">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item4">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item5">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item6">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item7">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item8">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item9">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item10">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item11">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
-                <li class="item item12">
-                    <div class="image">사진</div>
-                    <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="#">바로가기</a>
-                    </div>
-                </li>
+                
             </ul>
         </div>
         

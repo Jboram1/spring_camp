@@ -91,11 +91,11 @@ th{border: none;}
 .bottom_number li{list-style: none; width: 30px; height: 30px; padding: 0; cursor: pointer; border-radius: 5px;}
 .number{width: 30px; height: 30px; padding: 0; list-style: none; font-weight: 700;}
 .number:hover{width: 30px; height: 30px; padding: 0; list-style: none; background: #009223; border: 1px solid #009223; color: #ffce32; transition: all 0.4s; font-weight: 700;}
-.first{background: url(../img/list/btn_pre00.png) no-repeat;}
-.prev{background: url(../img/list/btn_pre01.png) no-repeat;}
+.first{background: url(../../img/list/btn_pre00.png) no-repeat;}
+.prev{background: url(../../img/list/btn_pre01.png) no-repeat;}
 .number{display: flex; position: relative; top: 1px; height: 33px !important; margin-left: 5px; margin-right: 5px; border: 1px #989898 solid; align-items: center; justify-content: center;}
 .number>div{position: relative; top: 2px;}
-.next{background: url(../img/list/btn_next01.png) no-repeat;}
-.last{background: url(../img/list/btn_next00.png) no-repeat;}
+.next{background: url(../../img/list/btn_next01.png) no-repeat;}
+.last{background: url(../../img/list/btn_next00.png) no-repeat;}
 
 

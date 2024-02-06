@@ -45,7 +45,7 @@
 			<div id="searchIP_contents">
 				<div id="searchIP_member">
 					<div id="searchIP_title">
-					<img src="../assets/img/idpwsearch.png">
+					<img src="../assets/img/login/idpwsearch.png">
 					<h1>아이디/비밀번호 찾기</h1>
 					</div>
 					
