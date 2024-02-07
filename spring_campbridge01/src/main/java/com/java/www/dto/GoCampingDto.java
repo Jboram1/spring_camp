@@ -26,6 +26,7 @@ public class GoCampingDto {
 	private String induty;
 	private String lctCl;
 	private String doNm;
+	private String sigunguNm;
 	private String zipcode;
 	private String addr1;
 	private String addr2;

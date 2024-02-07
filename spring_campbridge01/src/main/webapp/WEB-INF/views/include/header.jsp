@@ -35,7 +35,7 @@
 	      		<li><a href="/my/logout">로그아웃</a></li>
 	      		
 	      	</c:if>
-	      <li><a href="/commuinty/nList">공지사항</a></li>
+	      <li><a href="/search/publicData">공지사항</a></li>
 	      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
 	      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 	      <a class="btn-book-a-table" href="/rent/cpRent">용품대여</a>

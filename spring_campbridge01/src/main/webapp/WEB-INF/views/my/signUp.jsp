@@ -54,8 +54,7 @@
 				<fieldset class="fieldset_class">
 					<dl id="join_picture_dl">
 						<dt>
-							<div></div> <!-- 필수항목 -->
-							<label for="name">프로필 사진</label>
+							<label for="profile">프로필 사진</label>
 						</dt>
 						<dd class="photoBoxMI">
 							<div class="photoMI"><img id="previewImage" style="width:100%;"></div>
@@ -189,71 +188,71 @@
 						<dd>
 							<ul>
 								<li>
-									<input type="checkbox" name="local" id="c_do01" class="check01" value="서울시" title="1">
+									<input type="radio" name="local" id="c_do01" class="check01" value="서울시" title="1">
 									<label for="c_do01">서울시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do02" class="check01" value="부산시" title="2">
+									<input type="radio" name="local" id="c_do02" class="check01" value="부산시" title="2">
 									<label for="c_do02">부산시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do03" class="check01" value="대구시" title="3">
+									<input type="radio" name="local" id="c_do03" class="check01" value="대구시" title="3">
 									<label for="c_do03">대구시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do04" class="check01" value="인천시" title="4">
+									<input type="radio" name="local" id="c_do04" class="check01" value="인천시" title="4">
 									<label for="c_do04">인천시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do05" class="check01" value="광주시" title="5">
+									<input type="radio" name="local" id="c_do05" class="check01" value="광주시" title="5">
 									<label for="c_do05">광주시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do06" class="check01" value="대전시" title="6">
+									<input type="radio" name="local" id="c_do06" class="check01" value="대전시" title="6">
 									<label for="c_do06">대전시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do07" class="check01" value="울산시" title="7">
+									<input type="radio" name="local" id="c_do07" class="check01" value="울산시" title="7">
 									<label for="c_do07">울산시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do08" class="check01" value="세종시" title="8">
+									<input type="radio" name="local" id="c_do08" class="check01" value="세종시" title="8">
 									<label for="c_do08">세종시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do09" class="check01" value="경기도" title="9">
+									<input type="radio" name="local" id="c_do09" class="check01" value="경기도" title="9">
 									<label for="c_do09">경기도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do10" class="check01" value="강원도" title="10">
+									<input type="radio" name="local" id="c_do10" class="check01" value="강원도" title="10">
 									<label for="c_do10">강원도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do11" class="check01" value="충청북도" title="11">
+									<input type="radio" name="local" id="c_do11" class="check01" value="충청북도" title="11">
 									<label for="c_do11">충청북도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do12" class="check01" value="충청남도" title="12">
+									<input type="radio" name="local" id="c_do12" class="check01" value="충청남도" title="12">
 									<label for="c_do12">충청남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do13" class="check01" value="전라북도" title="13">
+									<input type="radio" name="local" id="c_do13" class="check01" value="전라북도" title="13">
 									<label for="c_do13">전라북도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do14" class="check01" value="전라남도" title="14">
+									<input type="radio" name="local" id="c_do14" class="check01" value="전라남도" title="14">
 									<label for="c_do14">전라남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do15" class="check01" value="경상북도" title="15">
+									<input type="radio" name="local" id="c_do15" class="check01" value="경상북도" title="15">
 									<label for="c_do15">경상북도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do16" class="check01" value="경상남도" title="16">
+									<input type="radio" name="local" id="c_do16" class="check01" value="경상남도" title="16">
 									<label for="c_do16">경상남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="local" id="c_do17" class="check01" value="제주도" title="17">
+									<input type="radio" name="local" id="c_do17" class="check01" value="제주도" title="17">
 									<label for="c_do17">제주도</label>
 								</li>
 							</ul>

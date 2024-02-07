@@ -186,12 +186,11 @@ public class MyController {
 		
 		//파일업로드 정보 - 파일저장위치
 		String fileUrl = "c:/upload/";
-		String mfileName = "";
 		System.out.println("이름 : "+ucdto.getName());
 		
 		//파일첨부가 되었는지 확인
+		String mfilePath = "";
 		if(!file.isEmpty()) {
-			int i = 0;
 				String orgfileName = file.getOriginalFilename();
 				long time = System.currentTimeMillis();
 				String uploadFileName = time+"_"+orgfileName;
@@ -201,16 +200,14 @@ public class MyController {
 				File f = new File(fileUrl+uploadFileName);
 				file.transferTo(f);
 				
-				if(i==0) mfileName += uploadFileName;
-				else mfileName +=","+uploadFileName;
-				
-				i++;
-				
-		}//if
+				mfilePath += uploadFileName;
+		}else {
+			mfilePath = "profile.png";
+		}
 		
 		//파일첨부가 없으면 빈공백, 1.jpg
-		ucdto.setM_img(mfileName);
-		System.out.println("최종이름 : "+mfileName);
+		ucdto.setM_img(mfilePath);
+		System.out.println("최종이름 : "+mfilePath);
 		
 		//회원가입 저장 service호출
 		userCampService.signUpinsert(ucdto);
