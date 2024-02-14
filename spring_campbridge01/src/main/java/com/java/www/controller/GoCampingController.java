@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,23 +38,22 @@ public class GoCampingController {
 	}
 	
 	
-	@GetMapping("searchData")
+	@GetMapping("gCamData")
 	@ResponseBody
-	public String searchData(String txt) throws Exception{
-		System.out.println("searchData txt : "+txt);
+	public String gCamData(@RequestParam(value="gCam[]") List<String> gCam) throws Exception{
+		System.out.println("gCamData gCam : "+gCam);
 		String page = 1+"";
 		String serviceKey = "q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCsJvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D";
 		String result = "";
-		System.out.println("txt : "+txt);
-		if(txt == null || txt.equals("")) {
-			//목록 메소드 - 검색단어가 없을때
-			result = campgingList(page,serviceKey);
-			result = campgingList(page,serviceKey);
-		}else {
-			//조회 메소드
-			result = campgingSearchList(txt,page,serviceKey);
-		}
-		System.out.println("searchData result : "+result);
+		result = campgingList(page,serviceKey);
+//		if(txt == null || txt.equals("")) {
+//			//목록 메소드 - 검색단어가 없을때
+//			result = campgingList(page,serviceKey);
+//		}else {
+//			//조회 메소드
+//			result = campgingSearchList(txt,page,serviceKey);
+//		}
+		System.out.println("gCamData result : "+result);
 		return result;
 	
 	}
@@ -64,9 +65,10 @@ public class GoCampingController {
 	
 	//캠핑장 조회 메소드
 	public String campgingSearchList(String txt, String page, String serviceKey) throws Exception {
+		//StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCsJvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json"); /*url*/
 		StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/searchList"); /*url*/
 		urlBuilder.append("?"+URLEncoder.encode("serviceKey","UTF-8") + "="+serviceKey); /*serviceKey*/
-		urlBuilder.append("&"+URLEncoder.encode("numOfRows","UTF-8") + "="+URLEncoder.encode("10", "UTF-8")); /*목록 건수*/
+		urlBuilder.append("&"+URLEncoder.encode("numOfRows","UTF-8") + "="+URLEncoder.encode("3760", "UTF-8")); /*목록 건수*/
 		urlBuilder.append("&"+URLEncoder.encode("pageNo","UTF-8") + "="+URLEncoder.encode(page, "UTF-8")); /*페이지번호*/
 		urlBuilder.append("&"+URLEncoder.encode("MobileOS","UTF-8") + "="+URLEncoder.encode("ETC", "UTF-8")); /*OS 구분 : IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC(기타)*/
 		urlBuilder.append("&"+URLEncoder.encode("MobileApp","UTF-8") + "="+URLEncoder.encode("AppTest", "UTF-8")); /*서비스명(어플명)*/
@@ -101,10 +103,14 @@ public class GoCampingController {
 	//캠핑장 목록 메소드
 	@Transactional
 	public String campgingList(String page, String serviceKey) throws Exception {
-		StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCsJvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json"); /*url*/
-		//StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList"); /*url*/
+		// 현재 페이지 번호를 가져오고 정수로 변환합니다.
+	    //int currentPage = 2;
+		
+		
+		//StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCsJvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json"); /*url*/
+		StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList"); /*url*/
 		urlBuilder.append("?"+URLEncoder.encode("serviceKey","UTF-8") + "="+serviceKey); /*serviceKey*/
-		urlBuilder.append("&"+URLEncoder.encode("numOfRows","UTF-8") + "="+URLEncoder.encode("10", "UTF-8")); /*목록 건수*/
+		urlBuilder.append("&"+URLEncoder.encode("numOfRows","UTF-8") + "="+URLEncoder.encode("3760", "UTF-8")); /*목록 건수*/
 		urlBuilder.append("&"+URLEncoder.encode("pageNo","UTF-8") + "="+URLEncoder.encode(page, "UTF-8")); /*페이지번호*/
 		urlBuilder.append("&"+URLEncoder.encode("MobileOS","UTF-8") + "="+URLEncoder.encode("ETC", "UTF-8")); /*OS 구분 : IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC(기타)*/
 		urlBuilder.append("&"+URLEncoder.encode("MobileApp","UTF-8") + "="+URLEncoder.encode("AppTest", "UTF-8")); /*서비스명(어플명)*/
@@ -142,7 +148,10 @@ public class GoCampingController {
 		JSONArray docuArray = (JSONArray) jsonObject4.get("item");
 		System.out.println("docuArray 개수 : "+docuArray.size());
 		
-		for(int i=0;i<10;i++) {
+		// 페이지 번호 증가
+	    //currentPage++;
+		
+		for(int i=0;i<3760;i++) {
 			JSONObject jObject = (JSONObject) docuArray.get(i);
 			System.out.println("jObject facltNm" +jObject.get("facltNm"));
 			
