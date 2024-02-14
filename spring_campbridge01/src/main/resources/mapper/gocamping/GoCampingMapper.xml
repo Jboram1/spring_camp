@@ -9,8 +9,12 @@
 
 	<insert id="insertCamping">
 		insert into gocamping values 
-		(#{contentId},#{facltNm},#{doNm},#{intro},#{homepage},#{operDeCl},#{themaEnvrnCl},#{firstImageUrl})
-		
+		(#{contentId},#{facltNm},#{lineIntro},#{intro},#{facltDivNm},#{mangeDivNm},#{featureNm},#{induty},#{lctCl},#{doNm},#{sigunguNm},
+		#{zipcode},#{addr1},#{addr2},#{mapX},#{mapY},#{direction},#{tel},#{homepage},#{resveUrl},#{resveCl},#{gnrlSiteCo},#{autoSiteCo},
+		#{glampSiteCo},#{caravSiteCo},#{indvdlCaravSiteCo},#{siteBottomCl1},#{siteBottomCl2},#{siteBottomCl3},#{siteBottomCl4},#{siteBottomCl5},
+		#{tooltip},#{glampInnerFclty},#{caravInnerFclty},#{operPdCl},#{operDeCl},#{trlerAcmpnyAt},#{caravAcmpnyAt},#{toiletCo},#{swrmCo},
+		#{wtrplCo},#{brazierCl},#{sbrsCl},#{sbrsEtc},#{posblFcltyCl},#{posblFcltyEtc},#{themaEnvrnCl},#{eqpmnLendCl},#{animalCmgCl},#{tourEraCl},
+		#{firstImageUrl},#{createdtime})
 	</insert>
 
 </mapper>

@@ -41,16 +41,18 @@ public class GoCampingController {
 	public String searchData(String txt) throws Exception{
 		System.out.println("searchData txt : "+txt);
 		String page = 1+"";
-		String serviceKey = "q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCshttps://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1JvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D";
+		String serviceKey = "q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCsJvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D";
 		String result = "";
 		System.out.println("txt : "+txt);
 		if(txt == null || txt.equals("")) {
 			//목록 메소드 - 검색단어가 없을때
 			result = campgingList(page,serviceKey);
+			result = campgingList(page,serviceKey);
 		}else {
 			//조회 메소드
 			result = campgingSearchList(txt,page,serviceKey);
 		}
+		System.out.println("searchData result : "+result);
 		return result;
 	
 	}
@@ -90,7 +92,7 @@ public class GoCampingController {
 		}
 		rd.close();
 		conn.disconnect();
-		System.out.println(sb.toString());
+		System.out.println("campgingSearchList : "+sb.toString());
 		
 		return sb.toString();
 	}
@@ -99,7 +101,8 @@ public class GoCampingController {
 	//캠핑장 목록 메소드
 	@Transactional
 	public String campgingList(String page, String serviceKey) throws Exception {
-		StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList"); /*url*/
+		StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCsJvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json"); /*url*/
+		//StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList"); /*url*/
 		urlBuilder.append("?"+URLEncoder.encode("serviceKey","UTF-8") + "="+serviceKey); /*serviceKey*/
 		urlBuilder.append("&"+URLEncoder.encode("numOfRows","UTF-8") + "="+URLEncoder.encode("10", "UTF-8")); /*목록 건수*/
 		urlBuilder.append("&"+URLEncoder.encode("pageNo","UTF-8") + "="+URLEncoder.encode(page, "UTF-8")); /*페이지번호*/
