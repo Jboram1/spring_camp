@@ -49,80 +49,82 @@
 		    	
 			<!-- 체크박스 -->
 			<li>
+			<form name="cSearchFrm" id="cSearchFrm" method="get" action="#">
+			
 				<div class="tm_ver f_open">
 					<div class="folder_w">
 						<strong>지역별</strong>
 						<div class="check_w">
 							<ul>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do01" class="check01" value="1" title="1"/>
+									<input type="checkbox" name="doNm" id="c_do01" class="check01" value="서울시" title="1"/>
 									<label for="c_do01">서울시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do02" class="check01" value="2" title="2"/>
+									<input type="checkbox" name="doNm" id="c_do02" class="check01" value="부산시" title="2"/>
 									<label for="c_do02">부산시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do03" class="check01" value="3" title="3"/>
+									<input type="checkbox" name="doNm" id="c_do03" class="check01" value="대구시" title="3"/>
 									<label for="c_do03">대구시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do04" class="check01" value="4" title="4"/>
+									<input type="checkbox" name="doNm" id="c_do04" class="check01" value="인천시" title="4"/>
 									<label for="c_do04">인천시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do05" class="check01" value="5" title="5"/>
+									<input type="checkbox" name="doNm" id="c_do05" class="check01" value="광주시" title="5"/>
 									<label for="c_do05">광주시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do06" class="check01" value="6" title="6"/>
+									<input type="checkbox" name="doNm" id="c_do06" class="check01" value="대전시" title="6"/>
 									<label for="c_do06">대전시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do07" class="check01" value="7" title="7"/>
+									<input type="checkbox" name="doNm" id="c_do07" class="check01" value="울산시" title="7"/>
 									<label for="c_do07">울산시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do08" class="check01" value="8" title="8"/>
+									<input type="checkbox" name="doNm" id="c_do08" class="check01" value="세종시" title="8"/>
 									<label for="c_do08">세종시</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do09" class="check01" value="9" title="9"/>
+									<input type="checkbox" name="doNm" id="c_do09" class="check01" value="경기도" title="9"/>
 									<label for="c_do09">경기도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do10" class="check01" value="10" title="10"/>
+									<input type="checkbox" name="doNm" id="c_do10" class="check01" value="강원도" title="10"/>
 									<label for="c_do10">강원도</label>
 								</li>
 							</ul>
 							<ul>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do11" class="check01" value="11" title="11"/>
+									<input type="checkbox" name="doNm" id="c_do11" class="check01" value="충청북도" title="11"/>
 									<label for="c_do11">충청북도</label>
 								</li>
 								
 								<li>
-									<input type="checkbox" name="doNm" id="c_do12" class="check01" value="12" title="12"/>
+									<input type="checkbox" name="doNm" id="c_do12" class="check01" value="충청남도" title="12"/>
 									<label for="c_do12">충청남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do13" class="check01" value="13" title="13"/>
+									<input type="checkbox" name="doNm" id="c_do13" class="check01" value="전라북도" title="13"/>
 									<label for="c_do13">전라북도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do14" class="check01" value="14" title="14"/>
+									<input type="checkbox" name="doNm" id="c_do14" class="check01" value="전라남도" title="14"/>
 									<label for="c_do14">전라남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do015" class="check01" value="15" title="15"/>
+									<input type="checkbox" name="doNm" id="c_do015" class="check01" value="경상북도" title="15"/>
 									<label for="c_do15">경상북도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do16" class="check01" value="16" title="16"/>
+									<input type="checkbox" name="doNm" id="c_do16" class="check01" value="경상남도" title="16"/>
 									<label for="c_do16">경상남도</label>
 								</li>
 								<li>
-									<input type="checkbox" name="doNm" id="c_do17" class="check01" value="17" title="17"/>
+									<input type="checkbox" name="doNm" id="c_do17" class="check01" value="제주도" title="17"/>
 									<label for="c_do17">제주도</label>
 								</li>
 							</ul>
@@ -168,15 +170,15 @@
 						<strong>바닥형태</strong>
 						<div class="check_w">
 							<ul>
-								<li><input type="checkbox" class="check01" name="siteBottomCl1" id="searchSiteBottomCl1" value="Y" title="잔디"
+								<li><input type="checkbox" class="check01" name="siteBottomCl1" id="searchSiteBottomCl1" value="잔디"
 									><label for="searchSiteBottomCl1" class="label_name">잔디</label></li>
-								<li><input type="checkbox" class="check01" name="siteBottomCl2" id="searchSiteBottomCl2" value="Y" title="파쇄석"
+								<li><input type="checkbox" class="check01" name="siteBottomCl2" id="searchSiteBottomCl2" value="파쇄석"
 									><label for="searchSiteBottomCl2" class="label_name">파쇄석</label></li>
-								<li><input type="checkbox" class="check01" name="siteBottomCl3" id="searchSiteBottomCl3" value="Y" title="데크"
+								<li><input type="checkbox" class="check01" name="siteBottomCl3" id="searchSiteBottomCl3" value="데크"
 									><label for="searchSiteBottomCl3" class="label_name">데크</label></li>
-								<li><input type="checkbox" class="check01" name="siteBottomCl4" id="searchSiteBottomCl4" value="Y" title="자갈"
+								<li><input type="checkbox" class="check01" name="siteBottomCl4" id="searchSiteBottomCl4" value="자갈"
 									><label for="searchSiteBottomCl4" class="label_name">자갈</label></li>
-								<li><input type="checkbox" class="check01" name="siteBottomCl5" id="searchSiteBottomCl7" value="Y" title="기타"
+								<li><input type="checkbox" class="check01" name="siteBottomCl5" id="searchSiteBottomCl7" value="기타"
 									><label for="searchSiteBottomCl7" class="label_name">기타</label></li>
 							</ul>
 						</div>
@@ -207,45 +209,61 @@
 					</div>
 					<!--//folder_w-->
 				</div> <!--//tm_ver-->
+			</form>		
 			</li>
-					
 			<li class="detail_btn_w">
 				<button type="button" class="b_lightgray" id="searchForm3ResetBtn">초기화</button>
 				<button type="button" id="csearchBtn" class="b_blue">검색하기</button>
 			</li>
 					
 		    <!-- 카드형 리스트 -->
-		    <div class="list_wrap">
+		    
+		    <div class="csList">
             <ul>
                 <li class="item item1">
-                    <div class="image">사진</div>
+		    <c:forEach var="gcdto" items="${map.list}">
+                	<div class="cs_contbox">
+                    <div class="image"><img src="${gcdto.firstImageUrl}" class="image"></div>
                     <div class="cont">
-                        <strong>캠핑장이름</strong>
-                        <p>캠핑장주소</p>
-                        <p>캠핑장연락처</p>
-                        <p>캠핑장소개내용</p>
-                        <a href="/search/campsearch_view">바로가기</a>
+                        <strong>${gcdto.facltNm}</strong>
+                        <p>${gcdto.addr1}</p>
+                        <p>${gcdto.tel}</p>
+                        <p>${gcdto.lineIntro}</p>
+                        <a href="campsearch_view?contentId=${gcdto.contentId}">바로가기</a>
                     </div>
+                	</div>
+		    </c:forEach>
                 </li>
                 
             </ul>
         </div>
         
         <ul class="bottom_number">
-	      <li class="first"></li>
-	      <li class="prev"></li>
-	      <li class="number">1</li>
-	      <li class="number">2</li>
-	      <li class="number">3</li>
-	      <li class="number">4</li>
-	      <li class="number">5</li>
-	      <li class="number">6</li>
-	      <li class="number">7</li>
-	      <li class="number">8</li>
-	      <li class="number">9</li>
-	      <li class="number">10</li>
-	      <li class="next"></li>
-	      <li class="last"></li>
+        	<a href="campsearch?page=1"><li class="first"></li></a>
+        	<c:if test="${map.page<=1}">
+	     		<li class="prev"></li></c:if>
+        	<c:if test="${map.page>1}">
+	     		<a href="campsearch?page=${map.page-1}">
+	     			<li class="prev"></li></a></c:if>
+	     	<c:forEach var="i" begin="${map.startPage}" end="${map.endPage}" step="1">
+	      		<c:if test="${map.page==i}">
+		      		<li class="number"><div>${i}</div></li>
+	      		</c:if>
+	      		<c:if test="${map.page!=i}">
+	      			<a href="campsearch?page=${i}">
+		      		<li class="number"><div>${i}</div></li>
+	      		</c:if>
+	   			</a>
+	     	</c:forEach>
+	     	<c:if test="${map.page<map.maxPage}">
+		      <a href="campsearch?page=${map.page+1}"><li class="next"></li></a>
+	     	</c:if>
+	     	<c:if test="${map.page>=map.maxPage}">
+		      <li class="next"></li>
+	     	</c:if>
+	     	
+		    <a href="campsearch?page=${map.maxPage}"><li class="last"></li></a>
+		    
 		</ul>
   
 	</section>

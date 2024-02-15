@@ -50,7 +50,7 @@
 		<div class="camp_info_box">
 		<!-- 이미지 -->
 		<div class="img_b">
-			<img src="../assets/img/campsearch/sachon.jpg" alt="사천비토솔섬오토캠핑장 메인 이미지" />
+			<img src="${map.gcdto.firstImageUrl}" alt="메인 이미지" />
 		</div>
 		<!-- 이미지 옆 표 -->
 		<div class="cont_tb">
@@ -62,37 +62,37 @@
 				<tbody>
 					<tr>
 						<th scope="col">주소</th>
-						<td>경남 사천시 서포면 토끼로 245-29</td>
+						<td>${map.gcdto.addr1}</td>
 					</tr>
 					<tr class="camp_call_pcVer">
 						<th scope="col">문의처</th>
-						<td>055-854-0404</td>
+						<td>${map.gcdto.tel}</td>
 					</tr>
 					<tr>
 						<th scope="col">캠핑장 환경</th>
-						<td>산, 숲 / 민간</td>
+						<td>${map.gcdto.lctCl}</td>
 					</tr>
 					<tr>
 						<th scope="col">캠핑장 유형</th>
-						<td>자동차야영장</td>
+						<td>${map.gcdto.induty}</td>
 					</tr>
 					<tr>
 						<th scope="col">운영기간</th>
-						<td>봄, 여름, 가을, 겨울</td>
+						<td>${map.gcdto.operPdCl}</td>
 					</tr>
 					<tr>
 						<th scope="col">운영일</th>
-						<td>평일+주말</td>
+						<td>${map.gcdto.operDeCl}</td>
 					</tr>
 					<tr>
 						<th scope="col">홈페이지</th>
-						<td><a href="http://cafe.daum.net/solsumcamping" target="_BLANK" title="새창열림"><strong>홈페이지 바로가기</strong></a>
-						<i class="ico_link"><span class="skip">새창으로</span></i>
+						<td><a href="${map.gcdto.homepage}" target="_BLANK" title="새창열림"><strong>${map.gcdto.homepage}</strong></a>
+						<i class="ico_link"><span class="skip"></span></i>
 						</td>
 					</tr>
 					<tr>
 						<th scope="col">주변이용가능시설</th>
-						<td>산책로, 낚시, 강/물놀이, 청소년체험시설</td>
+						<td>${map.gcdto.posblFcltyCl}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -110,11 +110,7 @@
 	    <input type="radio" name="tabmenu" id="tab04">
 	    <label for="tab04">캠핑&여행후기</label>
 	    <div class="conbox con1">
-	    	<span>솔섬오토캠핑장은 별주부전 테마파크가 있는 사천시 비토섬 인근 해안에 위치하고 있는 캠핑장이다. 바닥은 파쇄석으로 되어 있으며, 바다 사이트와 일반 사이트로 구분되어져 있다. 황토방과 펜션도 함께 운영하고 있어 초보 캠퍼가 이용하기 좋은 캠핑장이다. 바다 사이트 쪽은 카라반과 트레일러의 입장이 안된다. 
-				그늘막이 있는 수영장과 항상 깨끗하게 관리되고 있는 화장실과 개수대, 샤워장은 24시간 온수가 나와 좋으며, 개수대에는 전자레인지와 공용 냉장고가 설치되어 있어, 언제나 편리하게 신선한 음식을 먹을 수 있어 좋다. 
-				캠핑장 바로 앞이 바닷가라 갯벌체험을 할 수 있도록 5000원에 장화와 호미를 대여해 주고 있다. 아이들과 갯벌에서의 바지락, 굴, 고동, 낚지 등을 잡아 저녁거리도 준비하고 수다로 한편의 추억을 쌓아보자. 솔섬오토캠핑장은 일몰이 아름답기로 소문난 곳이다.
-				타이밍을 놓치지 말고 아름다운 노을을 감상하며 사진으로 담아보길 권한다. 주변 관광지로는 별주부전 테마파크,삼천포 케이블카, 사천 항공우주박물관, 삼천포 수산시장이 있으니 아이들과 방문해 보자.
-			</span>
+	    	<span>${map.gcdto.intro}</span>
 			<span class="date_info">최종 정보 수정일 : 2018-09-21</span>
 	    </div>
 	    <div class="conbox con2">안에 들어가는 내용으로 높이 자동 맞춤</div>

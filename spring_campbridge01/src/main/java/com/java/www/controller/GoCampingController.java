@@ -101,10 +101,9 @@ public class GoCampingController {
 
 
 	//캠핑장 목록 메소드
+	
 	@Transactional
 	public String campgingList(String page, String serviceKey) throws Exception {
-		// 현재 페이지 번호를 가져오고 정수로 변환합니다.
-	    //int currentPage = 2;
 		
 		
 		//StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCsJvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json"); /*url*/
@@ -147,9 +146,6 @@ public class GoCampingController {
 		JSONObject jsonObject4 = (JSONObject) jsonObject3.get("items");
 		JSONArray docuArray = (JSONArray) jsonObject4.get("item");
 		System.out.println("docuArray 개수 : "+docuArray.size());
-		
-		// 페이지 번호 증가
-	    //currentPage++;
 		
 		for(int i=0;i<3760;i++) {
 			JSONObject jObject = (JSONObject) docuArray.get(i);

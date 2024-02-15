@@ -42,6 +42,7 @@
 								hdata += '<td>'+iarr[i].facltNm+'</td>';
 								hdata += '<td>'+iarr[i].lineIntro+'</td>';
 								hdata += '<td>'+iarr[i].createdtime+'</td>';
+								hdata += '<td>'+iarr[i].firstImageUrl+'</td>';
 								hdata += '</tr>';
 							}
 							$("#content").html(hdata);
@@ -69,10 +70,11 @@
 		   <div id="body">
 		     <table>
 		       <colgroup>
-		         <col width="25%">
-		         <col width="25%">
-		         <col width="25%">
-		         <col width="25%">
+		         <col width="20%">
+		         <col width="20%">
+		         <col width="20%">
+		         <col width="20%">
+		         <col width="20%">
 		         
 		       </colgroup>
 		       <thead>
@@ -81,11 +83,13 @@
 			         <th>f</th>
 			         <th>d</th>
 			         <th>h</th>
+			         <th>h</th>
 			         
 			       </tr>
 		       </thead>
 		       <tbody id="content">
 			       <tr>
+			         <td></td>
 			         <td></td>
 			         <td></td>
 			         <td></td>
