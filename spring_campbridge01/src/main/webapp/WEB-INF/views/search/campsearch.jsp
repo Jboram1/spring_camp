@@ -226,9 +226,24 @@
                     <div class="image"><img src="${gcdto.firstImageUrl}" class="image"></div>
                     <div class="cont">
                         <strong>${gcdto.facltNm}</strong>
+                        
                         <p>${gcdto.addr1}</p>
-                        <p>${gcdto.tel}</p>
-                        <p>${gcdto.lineIntro}</p>
+                        
+                        <c:if test="${gcdto.tel!=null}">
+                        	<p>${gcdto.tel}</p>
+                        </c:if>
+                        <c:if test="${gcdto.tel==null}">
+                        	<p id="pnull">(등록된 연락처가 없습니다)</p>
+                        </c:if>
+                        
+                        <c:if test="${gcdto.lineIntro!=null}">
+                        	<p>${gcdto.lineIntro}</p>
+                        </c:if>
+                        <c:if test="${gcdto.lineIntro==null}">
+                        	<p id="pnull">(등록된 한줄소개가 없습니다)</p>
+                        </c:if>
+                        
+                        
                         <a href="campsearch_view?contentId=${gcdto.contentId}">바로가기</a>
                     </div>
                 	</div>

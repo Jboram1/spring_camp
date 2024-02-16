@@ -99,7 +99,7 @@
 			}
 			
 			
-			if ($("input[name='local']:checked").length!=1) {
+			if ($("input[name='local']:checked").length<1) {
 			    alert("지역 선택하셔야 합니다.");
 			    return false;
 			}
