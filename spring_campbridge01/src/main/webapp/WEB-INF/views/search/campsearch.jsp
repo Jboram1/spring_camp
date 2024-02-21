@@ -135,82 +135,9 @@
 				</div>
 			</li>
 			
-			<li>
-				<div class="tm_ver f_open">
-					<div class="folder_w">
-						<strong>입지구분</strong>
-						<div class="check_w">
-							<ul>
-								<li><input type="checkbox" name="lctCl" id="c_lct_cl01" class="check01" value="해변" title="47"
-										 /><label for="c_lct_cl01">해변</label></li>
-								<li><input type="checkbox" name="lctCl" id="c_lct_cl02" class="check01" value="섬" title="48"
-										 /><label for="c_lct_cl02">섬</label></li>
-								<li><input type="checkbox" name="lctCl" id="c_lct_cl03" class="check01" value="산" title="49"
-										 /><label for="c_lct_cl03">산</label></li>
-								<li><input type="checkbox" name="lctCl" id="c_lct_cl04" class="check01" value="숲" title="50"
-										 /><label for="c_lct_cl04">숲</label></li>
-								<li><input type="checkbox" name="lctCl" id="c_lct_cl05" class="check01" value="계곡" title="51"
-										 /><label for="c_lct_cl05">계곡</label></li>
-								<li><input type="checkbox" name="lctCl" id="c_lct_cl06" class="check01" value="강" title="52"
-										 /><label for="c_lct_cl06">강</label></li>
-								<li><input type="checkbox" name="lctCl" id="c_lct_cl07" class="check01" value="호수" title="53"
-										 /><label for="c_lct_cl07">호수</label></li>
-								<li><input type="checkbox" name="lctCl" id="c_lct_cl08" class="check01" value="도심" title="54"
-										 /><label for="c_lct_cl08">도심</label></li>
-								</ul>
-						</div>
-					</div>
-					<!--//folder_w-->
-				</div> <!--//tm_ver-->
-			</li>
-					
-			<li>
-				<div class="tm_ver f_open">
-					<div class="folder_w">
-						<strong>바닥형태</strong>
-						<div class="check_w">
-							<ul>
-								<li><input type="checkbox" class="check01" name="siteBottomCl1" id="searchSiteBottomCl1" value="잔디"
-									><label for="searchSiteBottomCl1" class="label_name">잔디</label></li>
-								<li><input type="checkbox" class="check01" name="siteBottomCl2" id="searchSiteBottomCl2" value="파쇄석"
-									><label for="searchSiteBottomCl2" class="label_name">파쇄석</label></li>
-								<li><input type="checkbox" class="check01" name="siteBottomCl3" id="searchSiteBottomCl3" value="데크"
-									><label for="searchSiteBottomCl3" class="label_name">데크</label></li>
-								<li><input type="checkbox" class="check01" name="siteBottomCl4" id="searchSiteBottomCl4" value="자갈"
-									><label for="searchSiteBottomCl4" class="label_name">자갈</label></li>
-								<li><input type="checkbox" class="check01" name="siteBottomCl5" id="searchSiteBottomCl7" value="기타"
-									><label for="searchSiteBottomCl7" class="label_name">기타</label></li>
-							</ul>
-						</div>
-					</div>
-					<!--//folder_w-->
-				</div> <!--//tm_ver-->
-			</li>
 			
 					
-			<li>
-				<div class="tm_ver f_open">
-					<div class="folder_w">
-						<strong>기타정보</strong>
-						<div class="check_w">
-							<ul>
-								<li><input type="checkbox" class="check01" name="trlerAcmpnyAt" id="searchTrlerAcmpnyAt" value="Y" title="개인 트레일러 입장가능"
-									><label for="searchTrlerAcmpnyAt"
-									class="label_name">개인 트레일러 입장가능</label></li>
-								<li><input type="checkbox" class="check01" name="caravAcmpnyAt" id="searchCaravAcmpnyAt" value="Y" title="개인 캠핑카 입장가능"
-									><label for="searchCaravAcmpnyAt"
-									class="label_name">개인 캠핑카 입장가능</label></li>
-								<li><input type="checkbox" class="check01" name="animalCmgCl" id="searchAnimalCmgCl" value="반려동물 동반가능" title="반려동물 동반가능"
-									><label for="searchAnimalCmgCl"
-									class="label_name">반려동물 동반가능</label></li>
-							</ul>
-							    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(※ 실제 결과는 현장사정 및 계절에 따라 달라질수 있으니 캠핑장 사업주에 직접 확인 후 이용바랍니다.)
-						</div>
-					</div>
-					<!--//folder_w-->
-				</div> <!--//tm_ver-->
 			</form>		
-			</li>
 			<li class="detail_btn_w">
 				<button type="button" class="b_lightgray" id="searchForm3ResetBtn">초기화</button>
 				<button type="button" id="csearchBtn" class="b_blue">검색하기</button>
@@ -253,6 +180,7 @@
             </ul>
         </div>
         
+        <!-- 
         <ul class="bottom_number">
         	<a href="campsearch?page=1"><li class="first"></li></a>
         	<c:if test="${map.page<=1}">
@@ -280,7 +208,11 @@
 		    <a href="campsearch?page=${map.maxPage}"><li class="last"></li></a>
 		    
 		</ul>
-  
+  		 -->
+  		 
+  		 <div id="cs_Btn">
+		 	 <button type="button" class="csMoreBtn">더보기</button>
+		</div>
 	</section>
 		
 		<!-- ======= Footer ======= -->

@@ -1,6 +1,5 @@
 package com.java.www.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +12,14 @@ public interface CampSearchService {
 	Map<String, Object> selectAll(int page);
 
 	//체크된값
-	List<GoCampingDto> chSelect(List<String> checkedValues);
+	List<GoCampingDto> chSelect(List<String> doNm);
 	
 	//게시글1개
 	Map<String, Object> selectOne(int contentId);
+
+
+
+
+
 
 }

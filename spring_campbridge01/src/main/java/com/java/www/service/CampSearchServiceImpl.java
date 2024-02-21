@@ -23,15 +23,10 @@ public class CampSearchServiceImpl implements CampSearchService {
 		//하단넘버링
 		if(page<=0) page=1;
 		int countPerPage = 9; //1페이지당 게시글 갯수
-		int bottomPerNum = 10; //하단넘버링 갯수
-		int countAll = campsearchMapper.selectCountAll();
-		int maxPage = (int)Math.ceil((double)countAll/countPerPage);
-		int startPage = ((page-1)/bottomPerNum)*bottomPerNum+1;
-		int endPage = (startPage+bottomPerNum)-1;
 		int startRow = (page-1)*countPerPage+1;
 		int endRow = startRow+countPerPage-1;
+		int countAll = campsearchMapper.selectCountAll();
 		
-		if(endPage>maxPage) endPage = maxPage;
 		ArrayList<GoCampingDto> list = campsearchMapper.selectAll(startRow,endRow);
 		
 		//데이터전송s
@@ -39,19 +34,10 @@ public class CampSearchServiceImpl implements CampSearchService {
 		map.put("list", list);
 		map.put("page", page);
 		map.put("countAll", countAll);
-		map.put("maxPage", maxPage);
-		map.put("startPage", startPage);
-		map.put("endPage", endPage);
 		
 		return map;
 	}//selectAll
 
-
-	@Override
-	public List<GoCampingDto> chSelect(List<String> checkedValues) {
-		List<GoCampingDto> searchData = campsearchMapper.chSelect(checkedValues);
-		return searchData;
-	}
 
 
 	@Override //게시글 1개
@@ -64,6 +50,17 @@ public class CampSearchServiceImpl implements CampSearchService {
 		
 		return map;
 	}
+
+
+
+	@Override//체크 된 값
+	public List<GoCampingDto> chSelect(List<String> doNm) {
+		List<GoCampingDto> list = campsearchMapper.chSelect(doNm);
+		return list;
+	}
+
+
+
 
 
 

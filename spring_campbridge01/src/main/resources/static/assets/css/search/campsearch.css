@@ -35,6 +35,11 @@ strong{width: 70px; text-align: center; margin-left: 15px;}
 .b_lightgray, .b_blue{margin-top: 20px; margin-left: 15px; width: 100px; height: 40px; background: #ffce32; font-weight: 700; border: none; border-radius: 10px;}
 .b_lightgray:hover, .b_blue:hover{background: #009223; color: #fff; font-weight: 700;}
 
+/* 더보기 버튼 */
+#cs_Btn button {margin-bottom: 50px;  background-color: #ffce32;  color: black; font-weight: bold; padding: 10px 15px; font-size: 16px;  border: none;  border-radius: 5px;  cursor: pointer;  border-radius: 25px; transition: background-color 0.3s;}
+#cs_Btn button:hover {background-color: #009223; color:white; font-weight: bold;}
+
+
 /* 뷰 */
 .camp_top_info{display: block; width: 80%; align-items: center; margin-left: 320px;}
 .skip{margin-bottom: 100px;}

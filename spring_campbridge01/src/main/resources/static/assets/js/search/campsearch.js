@@ -13,55 +13,71 @@
 			
 			
 		//검색버튼	
+		
+		
 		$("#csearchBtn").click(function(){
 			alert("검색");
-			if ($("input[type='checkbox']:checked").length<1) {
+			var doNm = [];
+			
+			$("input[type='checkbox']:checked").each(function(){
+		        doNm.push($(this).val());
+		    });
+			
+			if (doNm.length < 1) {
 			    alert("1개라도 선택하셔야 검색이 됩니다.");
 			    return false;
 			}
 			
-			$(document).ready(function() {
-			    let sChk = [];
-			
-			    $("input[type=checkbox]").change(function() {
-			        sChk = []; // 배열 초기화
-			        $("input[type=checkbox]:checked").each(function(){
-			            sChk.push($(this).val());
-			        });
-			        // sChk 배열을 콘솔에 로깅합니다.
-			        console.log("sChk 배열 내용: ", sChk);
-			    });
-			});
+			alert("체크된 값 : "+doNm);
 			
 			
-			/*
 			$.ajax({
 				url:"/search/sChkData",
 				type:"get",
-				data:{"sChk":sChk},
+				data:{"doNm":doNm},
 				dataType:"json",
 				success:function(data){
-					alert("성공");
-					console.log("전체데이터 : "+data);
-					let hdata = "";
-					for(let i=0;i<data.length;i++){
-						hdata += '<div class="image"><img src="'+data[i].firstImageUrl+'" class="image"></div>';
-						hdata += '<div class="cont">';
-						hdata += '<strong>'+data[i].facltNm+'</strong>';
-						hdata += '<p>'+data[i].addr1+'</p>';
-						hdata += '<p>'+data[i].tel+'</p>';
-						hdata += '<p>'+data[i].lineIntro+'</p>';
-						hdata += '<a href="/search/campsearch_view">바로가기</a>';
-						hdata += '</div>';
-					}
-					$(".cs_contbox").html(hdata);
+			    alert("성공");
+			    let hdata = "";
+			    for(let i=0; i<data.length; i++){
+			        hdata += '<div class="cs_contbox">';
+			        if(data[i].firstImageUrl != null){
+    	                    hdata += '<div class="image"><img class="image" src="' + data[i].firstImageUrl + '"></div>';
+	                    }else{
+    	                    hdata += '<div class="image"><img class="image" src="../assets/img/noPhoto_s.jpg"></div>';}
+			        hdata += '<div class="cont">';
+			        hdata += '<strong>'+data[i].facltNm+'</strong>';
+			        hdata += '<p>'+data[i].addr1+'</p>';
+			        
+			        // 연락처가 있는 경우 출력, 없는 경우 특정 메시지 출력
+			        if(data[i].tel != null){
+			            hdata += '<p>'+data[i].tel+'</p>';
+			        } else {
+			            hdata += '<p id="pnull">(등록된 연락처가 없습니다)</p>';
+			        }
+			        
+			        // 한 줄 소개가 있는 경우 출력, 없는 경우 특정 메시지 출력
+			        if(data[i].lineIntro != null){
+			            hdata += '<p>'+data[i].lineIntro+'</p>';
+			        } else {
+			            hdata += '<p id="pnull">(등록된 한줄소개가 없습니다)</p>';
+			        }
+			        
+			        // 바로가기 링크
+			        hdata += '<a href="campsearch_view?contentId='+data[i].contentId+'">바로가기</a>';
+			        
+			        hdata += '</div>';
+			        hdata += '</div>';
+			        
+			    }
+			    $(".item").html(hdata);
 					
 				},
 				error:function(){
 					alert("실패");
 				}
 			});//ajax
-			*/
+			
 			
 			
 		});//csearchBtn		
@@ -71,8 +87,119 @@
 	
 	
 	
+	//더보기 버튼
+	 $(function(){
+        	let page = 1;
+        	$(".csMoreBtn").click(function(){
+        		 //alert("더보기 버튼 실행");
+        		  
+        		
+        		$.ajax({
+        			url:"/search/csMore",
+        			type:"post",
+        			data:{"page":page},
+        			dataType:"json",
+        	        success: function (data) {
+        	            if (data.list.length > 0) {
+        	                let hdata = "";
+
+        	                data.list.forEach(gcdto => {
+        	                    hdata += '<div class="cs_contbox">';
+						        if(gcdto.firstImageUrl != null){
+			    	                    hdata += '<div class="image"><img class="image" src="' + gcdto.firstImageUrl + '"></div>';
+				                    }else{
+			    	                    hdata += '<div class="image"><img class="image" src="../assets/img/noPhoto_s.jpg"></div>';}
+						        hdata += '<div class="cont">';
+						        hdata += '<strong>'+gcdto.facltNm+'</strong>';
+						        hdata += '<p>'+gcdto.addr1+'</p>';
+						        
+						        // 연락처가 있는 경우 출력, 없는 경우 특정 메시지 출력
+						        if(gcdto.tel != null){
+						            hdata += '<p>'+gcdto.tel+'</p>';
+						        } else {
+						            hdata += '<p id="pnull">(등록된 연락처가 없습니다)</p>';
+						        }
+						        
+						        // 한 줄 소개가 있는 경우 출력, 없는 경우 특정 메시지 출력
+						        if(gcdto.lineIntro != null){
+						            hdata += '<p>'+gcdto.lineIntro+'</p>';
+						        } else {
+						            hdata += '<p id="pnull">(등록된 한줄소개가 없습니다)</p>';
+						        }
+						        
+						        // 바로가기 링크
+						        hdata += '<a href="campsearch_view?contentId='+gcdto.contentId+'">바로가기</a>';
+						        
+						        hdata += '</div>';
+						        hdata += '</div>';
+        	                });
+
+        	                $(".item").append(hdata);
+
+        	                page++;
+        	                
+        	            } else {
+        	                // 더 이상 데이터가 없을 경우, 더보기 버튼을 숨김
+        	                $(".csMoreBtn").hide();
+        	            }
+        	        },
+        			error:function(){
+        				alert("더보기 실패");
+        			}
+        		
+        		
+        		});//ajax
+
+        	});
+        	
+        });
 	
-	/* 뷰페이지 지도 ${map.gcdto.mapX}, ${map.gcdto.mapY}*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* 뷰페이지 지도 ${map.gcdto.mapX}, ${map.gcdto.mapY}
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		  mapOption = { 
 		        center: new kakao.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
@@ -118,7 +245,7 @@
 		
 		
 		
-	/* 뷰페이지 표 */	
+	*/	
 	
 
 

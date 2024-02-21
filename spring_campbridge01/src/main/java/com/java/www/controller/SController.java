@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,17 +39,32 @@ public class SController {
 	}// campsearch()
 	
 	
-	@GetMapping("sChkData")
+	
+	@PostMapping("/csMore") //더보기 버튼
 	@ResponseBody
-	public List<GoCampingDto> campsearch(@RequestParam("sChk") List<String> checkedValues) {
-		List<GoCampingDto> searchData = campsearchService.chSelect(checkedValues);
+	public Map<String, Object> campsearch(@RequestParam(defaultValue = "1") int page){
+		//db에서 가져오기
+		System.out.println("page : "+page);
+		Map<String, Object> map = campsearchService.selectAll(page);
 		
-		return searchData;
-	}// campsearch()
+		return map;
+	}//campsearch
+	
+	
+	
+	@GetMapping("/sChkData")
+	@ResponseBody
+	public List<GoCampingDto> campsearch(@RequestParam(value="doNm[]") List<String> doNm) throws Exception{
+		
+		System.out.println("배열확인 : "+doNm);
+		List<GoCampingDto> list = campsearchService.chSelect(doNm);
+		
+		return list;
+	}//campsearch
 	
 
-	
-	
+
+
 	//캠핑장 뷰페이지
 	@GetMapping("campsearch_view")
 	public String campsearch_view(@RequestParam(defaultValue = "1") int contentId, Model model) {
