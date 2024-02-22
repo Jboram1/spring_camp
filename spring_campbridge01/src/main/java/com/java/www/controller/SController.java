@@ -21,26 +21,25 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("search")
 public class SController {
 	
-	@Autowired CampSearchService campsearchService; // 이 서비스는 DB에서 데이터를 가져오는 로직을 담당
+	@Autowired CampSearchService campsearchService; 
 	@Autowired HttpSession session;
 	
 	
-
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	//캠핑장 검색  //전체 가져오기
 	@GetMapping("campsearch")
 	public String campsearch(@RequestParam(defaultValue = "1") int page, Model model) {
-		
 		//전체 가져오기
 		Map<String, Object> map = campsearchService.selectAll(page);
 		//model에 데이터 담기
 		model.addAttribute("map",map);
-
 		return "/search/campsearch";
 	}// campsearch()
 	
 	
-	
-	@PostMapping("/csMore") //더보기 버튼
+	//캠핑장 검색 //더보기 버튼
+	@PostMapping("/csMore") 
 	@ResponseBody
 	public Map<String, Object> campsearch(@RequestParam(defaultValue = "1") int page){
 		//db에서 가져오기
@@ -51,29 +50,22 @@ public class SController {
 	}//campsearch
 	
 	
-	
+	//캠핑장 검색 //체크된값ajax
 	@GetMapping("/sChkData")
 	@ResponseBody
 	public List<GoCampingDto> campsearch(@RequestParam(value="doNm[]") List<String> doNm) throws Exception{
-		
 		System.out.println("배열확인 : "+doNm);
 		List<GoCampingDto> list = campsearchService.chSelect(doNm);
-		
 		return list;
 	}//campsearch
+
 	
-
-
-
 	//캠핑장 뷰페이지
 	@GetMapping("campsearch_view")
 	public String campsearch_view(@RequestParam(defaultValue = "1") int contentId, Model model) {
-		
 		System.out.println("SC contentId : "+contentId);
-		
 		//게시글 1개 가져오기
 		Map<String, Object> map = campsearchService.selectOne(contentId);
-		
 		//model저장
 		model.addAttribute("map",map);
 		return "/search/campsearch_view";

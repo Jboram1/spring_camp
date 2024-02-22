@@ -10,24 +10,17 @@
 			$('input[type="checkbox"]').prop('checked', false);
 		});//searchForm3ResetBtn
 			
-			
-			
 		//검색버튼	
-		
-		
 		$("#csearchBtn").click(function(){
 			alert("검색");
 			var doNm = [];
-			
 			$("input[type='checkbox']:checked").each(function(){
 		        doNm.push($(this).val());
 		    });
-			
 			if (doNm.length < 1) {
 			    alert("1개라도 선택하셔야 검색이 됩니다.");
 			    return false;
 			}
-			
 			alert("체크된 값 : "+doNm);
 			
 			
@@ -48,21 +41,18 @@
 			        hdata += '<div class="cont">';
 			        hdata += '<strong>'+data[i].facltNm+'</strong>';
 			        hdata += '<p>'+data[i].addr1+'</p>';
-			        
 			        // 연락처가 있는 경우 출력, 없는 경우 특정 메시지 출력
 			        if(data[i].tel != null){
 			            hdata += '<p>'+data[i].tel+'</p>';
 			        } else {
 			            hdata += '<p id="pnull">(등록된 연락처가 없습니다)</p>';
 			        }
-			        
 			        // 한 줄 소개가 있는 경우 출력, 없는 경우 특정 메시지 출력
 			        if(data[i].lineIntro != null){
 			            hdata += '<p>'+data[i].lineIntro+'</p>';
 			        } else {
 			            hdata += '<p id="pnull">(등록된 한줄소개가 없습니다)</p>';
 			        }
-			        
 			        // 바로가기 링크
 			        hdata += '<a href="campsearch_view?contentId='+data[i].contentId+'">바로가기</a>';
 			        
@@ -77,11 +67,7 @@
 					alert("실패");
 				}
 			});//ajax
-			
-			
-			
 		});//csearchBtn		
-	
 	});//j
 	
 	
@@ -92,8 +78,6 @@
         	let page = 1;
         	$(".csMoreBtn").click(function(){
         		 //alert("더보기 버튼 실행");
-        		  
-        		
         		$.ajax({
         			url:"/search/csMore",
         			type:"post",

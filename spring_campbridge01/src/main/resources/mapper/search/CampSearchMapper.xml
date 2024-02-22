@@ -19,21 +19,14 @@
 <!-- 체크 가져오기 -->
 	<select id="chSelect" resultType="com.java.www.dto.GoCampingDto">
 		    SELECT * FROM gocamping WHERE
-		            <foreach collection="list" index="index" item="doNm" open="(" close=")" separator="or">
-		                doNm LIKE '%'||#{doNm}||'%'
-		            </foreach>
-		 
+            <foreach collection="list" index="index" item="doNm" open="(" close=")" separator="or">
+                doNm LIKE '%'||#{doNm}||'%'
+            </foreach>
 	</select>
-	
-
 	
 <!-- 1개 가져오기 -->
 	<select id="selectOne" resultType="com.java.www.dto.GoCampingDto">
 		select * from gocamping where contentId=#{contentId}
 	</select>
-
-	
-
-	
 
 </mapper>

@@ -101,12 +101,8 @@ public class GoCampingController {
 
 
 	//캠핑장 목록 메소드
-	
 	@Transactional
 	public String campgingList(String page, String serviceKey) throws Exception {
-		
-		
-		//StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=q%2BhmANz1x8F%2F0t51p%2FApSH3XstZxKxTFpRCsJvSTNYW%2Fed%2F6zR%2FhzlmX%2FiK2a%2FzTK6QdD72ud%2BiNxUI4cIFVgQ%3D%3D&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=AppTest&_type=json"); /*url*/
 		StringBuilder urlBuilder = new StringBuilder("https://apis.data.go.kr/B551011/GoCamping/basedList"); /*url*/
 		urlBuilder.append("?"+URLEncoder.encode("serviceKey","UTF-8") + "="+serviceKey); /*serviceKey*/
 		urlBuilder.append("&"+URLEncoder.encode("numOfRows","UTF-8") + "="+URLEncoder.encode("3760", "UTF-8")); /*목록 건수*/
@@ -124,13 +120,11 @@ public class GoCampingController {
 		if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		}else {
-			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-		}
+			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));}
 		StringBuilder sb = new StringBuilder(); //String 을 계속 더하면 String변수를 계속 새롭게 만듬.
 		String line;
 		while((line = rd.readLine()) != null) {
-			sb.append(line); //json 데이터를 sb에 1줄씩 저장
-		}
+			sb.append(line);} //json 데이터를 sb에 1줄씩 저장
 		rd.close();
 		conn.disconnect();
 		

@@ -127,17 +127,18 @@
 						}
 					});//ajax
 				});//pwSBtn
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				//----아이디 저장하기 체크박스 시작-------	
 			});//제이쿼리 구문
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			//----아이디 저장하기 체크박스 시작-------	
+			/*
 			  function onSuccess(googleUser) {
 			      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
 			    }
@@ -155,6 +156,6 @@
 			        'onfailure': onFailure,
 			      });
 			    }
-			    
+			  */  
 			    
 			    

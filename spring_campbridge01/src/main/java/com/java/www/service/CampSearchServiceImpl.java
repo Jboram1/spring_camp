@@ -20,7 +20,7 @@ public class CampSearchServiceImpl implements CampSearchService {
 
 	@Override //전체가져오기
 	public Map<String, Object> selectAll(int page) {
-		//하단넘버링
+		//하단더보기
 		if(page<=0) page=1;
 		int countPerPage = 9; //1페이지당 게시글 갯수
 		int startRow = (page-1)*countPerPage+1;
@@ -42,12 +42,9 @@ public class CampSearchServiceImpl implements CampSearchService {
 
 	@Override //게시글 1개
 	public Map<String, Object> selectOne(int contentId) {
-		
 		GoCampingDto gcdto = campsearchMapper.selectOne(contentId);
-		
 		Map<String, Object> map = new HashMap<>();
 		map.put("gcdto", gcdto);
-		
 		return map;
 	}
 
