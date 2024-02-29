@@ -58,6 +58,9 @@
 				</div>
 				<div class="bbs-sch">
 					<form action="used_sh2" name="used_sh2Frm" method="get">
+					
+					
+					
 						
 						<!-- .검색 폼시작 -->
 						<fieldset>
