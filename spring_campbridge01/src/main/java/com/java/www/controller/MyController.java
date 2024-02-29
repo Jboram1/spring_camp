@@ -39,10 +39,6 @@ public class MyController {
 		return "index";
 	}// index()
 	
-	@GetMapping("login")
-	public String login() {
-		return "/my/login";
-	}// login()
 	
 	@GetMapping("logout")
 	public String logout() {
@@ -50,22 +46,22 @@ public class MyController {
 		return "/my/logout";
 	}// logout()
 	
+	
+	@GetMapping("login")
+	public String login() {
+		return "/my/login";
+	}// login()
+	
 	@RequestMapping("doLogin")
 	public String doLogin(User_campDto ucdto, Model model, HttpServletRequest request) {
 		int result = 0;
 		System.out.println("FC id : "+ucdto.getId());
-		System.out.println("FC pw : "+ucdto.getPw());
-		
 		User_campDto usercampDto = userCampService.loginSelect(ucdto);
 		if(usercampDto != null) {
 			session.setAttribute("session_id", usercampDto.getId());
 			session.setAttribute("session_name", usercampDto.getName());
-			
 			result = 1;
-		}else {
-			System.out.println("FC userDto : null");
-		}
-		
+		}else {System.out.println("FC userDto : null");	}
 		model.addAttribute("result", result);
 		return "/my/doLogin";
 	}// doLogin()
@@ -91,8 +87,6 @@ public class MyController {
 	@PostMapping("idSearch") //ajax 아이디찾기- name,email
 	@ResponseBody
 	public String idSearch(String name, String email) {
-		System.out.println("FC idsearch name : "+name);
-		System.out.println("FC idsearch email : "+email);
 		User_campDto usercampDto = userCampService.idsearch(name,email);
 		String result = "";
 		String tempId=""; //임시아이디
@@ -104,7 +98,6 @@ public class MyController {
 		}else {
 			result="fail";
 		}
-					
 		return result;
 	}// idSearch()
 
@@ -120,33 +113,23 @@ public class MyController {
 	@PostMapping("pwsearch")
 	@ResponseBody
 	public String pwsearch(String id, String email) {
-		System.out.println("MyController id : "+id);
-		System.out.println("MyController email : "+email);
 		//service연결 비밀번호 찾기-아이디,이메일검색
 		String result = userCampService.pwsearch(id,email);
 		return result;
 	}
-	
-	
-	
 	@PostMapping("email")
 	@ResponseBody
 	public String email(String email) {
-		System.out.println("MController email : "+email);
-		
 		//service연결 - 이메일주소 보냄.
 		String result = emailService.mailSend(email);
 		return result;
 	}
-	
 	@PostMapping("pwChk") //인증코드 확인
 	@ResponseBody
 	public String pwChk(String pwcode) {
-		System.out.println("MController pwcode : "+pwcode);
 		String pw = (String) session.getAttribute("email_pwcode");
 		String result ="fail";
 		if(pw.equals(pwcode)) result="success";
-		
 		return result;
 	}
 	

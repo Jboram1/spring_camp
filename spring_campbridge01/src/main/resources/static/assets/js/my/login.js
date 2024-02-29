@@ -11,7 +11,7 @@
 					alert("회원가입 페이지로 이동합니다.")
 					location.href="signUp";
 				});//#회원가입
-		    //----------------아이디 저장하기--------------------
+		       //----------------아이디 저장하기--------------------
 				var savedId = localStorage.getItem("rememberedId");
 				if(savedId){
 					$("#id").val(savedId);

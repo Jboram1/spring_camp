@@ -29,33 +29,26 @@ public class User_campServiceImpl implements User_campService {
 	@Override //로그인
 	public User_campDto loginSelect(User_campDto ucdto) {
 		User_campDto usercampDto = userCampMapper.loginSelect(ucdto);
-		return usercampDto;
-	}
+		return usercampDto;}
 
 
 	
 	@Override //아이디찾기 -name,mail
 	public User_campDto idsearch(String name, String email) {
 		User_campDto usercampDto = userCampMapper.idsearch(name,email);
-		
 		return usercampDto;
 	}
-
-
 
 	@Override //비밀번호찾기 - id,mail
 	public String pwsearch(String id, String email) {
 		User_campDto usercampDto = userCampMapper.pwsearch(id,email);
 		String result = "";
-		
 		if(usercampDto!=null) {
 			result = "success";
 			//이메일 발송부분
 			System.out.println("이메일발송 프로그램을 진행합니다.");
 			String pwcode = getCreateKey();
 			System.out.println("pwsearch pwcode : "+pwcode);
-			//섹션 저장
-			//session.setAttribute("pwsearch_pwcode", pwcode);
 			//이메일
 			MimeMessage message = mailSender.createMimeMessage();
 			try {
@@ -92,16 +85,11 @@ public class User_campServiceImpl implements User_campService {
 					+ "<body bgcolor='#FFFFFF' leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' style='margin:0; padding:0; font:normal 12px/1.5 돋움;'>\r\n"
 					+ "<table width='700' cellpadding='0' cellspacing='0' align='center'>\r\n"
 					+ "<tr>\r\n"
-					+ "	<td style='width:700px;height:100px;padding-top:30px;margin:0;vertical-align:top;font-size:0;line-height:0;'>\r\n"
-					+ "		<img style='display:block; margin: 0 auto;' src='http://localhost:8000/assets/img/login/logo.png' alt='CampBridge' />					\r\n"
-					+ "	</td>\r\n"
-					+ "</tr>\r\n"
-					+ "<tr>\r\n"
 					+ "	<td style='width:700px;height:78px;padding:0;margin:0; font-weight:900; vertical-align:top;'>\r\n"
-					+ "		<p style='width:620px;margin:20px auto 0px;text-align:center;font-size:30px;'>\r\n"
+					+ "		<p style='width:620px;margin:0 auto;text-align:center;font-size:60px; color:#009223'>\r\n"
 					+ "		CampBridge\r\n"
 					+ "		</p>\r\n"
-					+ "		<p style='width:620px;margin:0 auto 25px;text-align:center;font-size:30px;line-height:40px;'>\r\n"
+					+ "		<p style='width:620px;margin:20px auto 25px;text-align:center;font-size:30px;line-height:40px;'>\r\n"
 					+ "		임시 비밀번호가 발급되었습니다.	\r\n"
 					+ "		</p>\r\n"
 					+ "	</td>\r\n"

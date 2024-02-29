@@ -67,31 +67,16 @@
 				<tbody>
 					
 					<c:if test="${not empty map.gcdto.facltNm}">
-						<tr>
-							<th scope="col">캠핑장명</th>
-							<td>${map.gcdto.facltNm}</td>
-						</tr>
+						<tr><th scope="col">캠핑장명</th><td>${map.gcdto.facltNm}</td></tr>
 					</c:if>
-					
 					<c:if test="${not empty map.gcdto.addr1}">
-						<tr>
-							<th scope="col">주소</th>
-							<td>${map.gcdto.addr1}</td>
-						</tr>
+						<tr><th scope="col">주소</th><td>${map.gcdto.addr1}</td></tr>
 					</c:if>
-					
 					<c:if test="${not empty map.gcdto.tel}">
-						<tr>
-							<th scope="col">문의처</th>
-							<td>${map.gcdto.tel}</td>
-						</tr>
+					<tr><th scope="col">문의처</th><td>${map.gcdto.tel}</td></tr>
 					</c:if>
-					
 					<c:if test="${not empty map.gcdto.lctCl}">
-						<tr>
-							<th scope="col">캠핑장 환경</th>
-							<td>${map.gcdto.lctCl}</td>
-						</tr>
+					<tr><th scope="col">캠핑장 환경</th><td>${map.gcdto.lctCl}</td></tr>
 					</c:if>
 					
 					<c:if test="${not empty map.gcdto.induty}">

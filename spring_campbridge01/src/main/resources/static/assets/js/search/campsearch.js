@@ -183,7 +183,7 @@
 	
 	
 	
-	/* 뷰페이지 지도 ${map.gcdto.mapX}, ${map.gcdto.mapY}
+	 /*뷰페이지 지도 ${map.gcdto.mapX}, ${map.gcdto.mapY}
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		  mapOption = { 
 		        center: new kakao.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
@@ -227,9 +227,9 @@
 		    yAnchor: 1 
 		});
 		
+		*/
 		
 		
-	*/	
 	
 
 
