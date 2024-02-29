@@ -11,6 +11,8 @@
 		<title>nResult</title>
 	</head>
 	<body>
+	
+	
 		<c:choose>
 				<c:when test="${result == 'used-w'}">
 					<script>
